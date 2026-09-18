@@ -44,6 +44,17 @@ Decision source: Jon's explicit “AQ-001 APPROVED BY JON” instruction in the 
 
 This approval authorizes only this controlled attempt; it is not continuing live-provider authorization.
 
+## AQ-002 — Per-client external-discovery quota protection
+
+Status: APPROVED
+Jon decision: APPROVED in the active Codex session on 2026-09-18.
+
+Scope: inspect existing remote client identity, runtime limits, usage logging and durable usage events; implement the smallest additive configurable per-client discovery budget; test repeated/concurrent calls, identity isolation, truthful actual-search accounting, and restart safety using existing durable data. Use client_label + client_fingerprint. Cache hits and account checks must not consume search allowance; unknown potentially-started outcomes must fail conservatively.
+
+No live SerpApi search, secret persistence/container wiring, Docker restart/rebuild, schema/migration/dependency/source-policy/public-tool-schema/deployment changes, MCP publication, or unrelated improvements. If accurate enforcement requires schema/public request changes, weakened metering, or major architecture changes, stop for approval.
+
+Run focused and full Node tests; affected Python tests only if Python changes. Publish one sanitized AQ-002 Per-Client Discovery Quota Review Packet to Queue #1, then stop for supervisor review. This approval does not authorize deployment or live validation.
+
 ## Request template
 
 - ID and title:
