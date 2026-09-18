@@ -44,23 +44,23 @@ public control plane and queue issue. No real SerpApi activation, provider searc
 quota consumption, deployment, schema change, or dependency addition is performed.
 No secrets, customer data, or private logs are included in the published material.
 
-## Publication blocker
+## Publication status
 
-The public repository was inspected and cloned. All six files and the permanent
-issue body are prepared locally, but neither files nor issue were published.
-The GitHub CLI is absent. Plugin discovery reports GitHub installed, but this
-session exposes no callable GitHub repository/issue tools. No existing GitHub
-API credential was available through the environment or Git credential helper.
-No credentials were printed or persisted.
+All six control files are published: README.md, AI_SUPERVISOR.md,
+CURRENT_TASK.md, APPROVAL_QUEUE.md, CODEX_REPORT.md, and DECISIONS.md.
+[Procurement Supervisor Queue #1](https://github.com/lopezjon45-web/procurement-supervisor/issues/1)
+is live. The control plane is operational. Local `gh auth status` confirms
+restored authentication; no credential values are included here.
 
-Required unblock: make authenticated GitHub repository and issue write access
-available to this session. Do not paste credentials into the public repository,
-issue, or chat. Then publish the prepared setup, verify it, report the issue URL,
-and stop. AQ-001 remains PENDING throughout.
+This bridge cycle updates only CURRENT_TASK.md and CODEX_REPORT.md and publishes
+one sanitized implementation review packet to Queue #1. The packet identifies
+the prior four-file procurement change and its exact symbols, comparison stat,
+reported validation, preserved behavior, concurrency limitation, and rollback.
+Prior test counts remain historical evidence, not new test runs in this cycle.
 
-Validation performed: exactly the six intended Markdown paths are changed or
-new; git diff --check passed. Publication and issue creation remain unverified
-because they have not occurred.
+AQ-001 remains PENDING. This status update authorizes no product implementation
+or live provider activity. No product code, schema, migration, dependency,
+application authentication, source policy, deployment, or runtime was changed.
 
 ## Next action
 

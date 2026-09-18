@@ -43,12 +43,15 @@ No new product implementation is authorized during control-plane setup.
 AQ-001 remains PENDING. Stop after publishing the six control files and permanent
 queue issue. Report the issue URL and wait for supervisor / human review.
 
-## Setup publication blocker
+## Control-plane publication status
 
-Six files and the issue body are prepared locally. Authenticated GitHub write
-access is unavailable in this session; nothing has been published and no issue
-URL exists yet. Enable authenticated access to finish the authorized setup.
-AQ-001 remains PENDING. No product implementation starts while blocked.
+All six control files are published. [Procurement Supervisor Queue #1](https://github.com/lopezjon45-web/procurement-supervisor/issues/1)
+is live. The control plane is operational, and authenticated GitHub CLI access
+is restored. AQ-001 remains PENDING.
+
+This status update authorizes no product implementation or live provider activity.
+The only next action is supervisor review of SERPAPI-FREE-TIER-GUARDRAIL-001;
+credential activation and the controlled live test remain gated by AQ-001.
 
 ## Cycle outcome
 
