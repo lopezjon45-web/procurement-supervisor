@@ -5,7 +5,7 @@ Record the exact decision, scope, and decision-source link; never infer approval
 
 ## AQ-001 — Activate real SerpApi credential
 
-Status: PENDING
+Status: APPROVED
 
 Requested action: securely activate the real SerpApi credential and perform
 exactly one controlled live discovery search request after guardrail review.
@@ -27,10 +27,22 @@ change needs explicit approval within its own stated scope.
 Safety: never place the credential or raw private provider payloads in this
 public repository or issue. Do not retry a failed controlled search automatically.
 
-Jon decision: PENDING
-Decision source: not yet provided.
+Jon decision: APPROVED for the narrow scope below.
+Decision source: Jon's explicit “AQ-001 APPROVED BY JON” instruction in the active Codex session on 2026-09-18. The approval is also recorded in Procurement Supervisor Queue #1.
 
-Do not execute while PENDING.
+### Approved execution scope — 2026-09-18
+
+- Exactly one controlled live SerpApi search through the existing procurement intelligence path.
+- Query: "I need a rear wiper arm for a 2015 Ford Edge".
+- `refresh_if_missing=true`, `minimum_evidence=discovered`, `max_queries=1`; cache-first behavior remains in force.
+- Account/quota API checks are allowed and do not count as search requests.
+- Preserve the 25-search reserve. Stop if allowance is at or below 25, quota check fails, credential/authentication fails, or the search errors.
+- No retries and no second search. No destination-page crawling or product verification; candidates remain DISCOVERED and compatibility must not be inferred.
+- Session-only secret entry if needed; do not persist or expose the credential.
+- No deployment/runtime restart, schema, authentication, source-policy, or dependency changes; no product-code changes or next roadmap step.
+- Post one sanitized controlled-attempt result to Queue #1, then stop for supervisor review.
+
+This approval authorizes only this controlled attempt; it is not continuing live-provider authorization.
 
 ## Request template
 
