@@ -1,59 +1,34 @@
 # Approval Queue
 
-Only Jon can decide YES / NO. Pending requests are not execution authorization.
-Record the exact decision, scope, and decision-source link; never infer approval.
+Only Jon can decide YES / NO. Pending requests are not execution authorization. Record the exact decision, scope, and decision-source link; never infer approval.
 
-## AQ-001 — Activate real SerpApi credential
+## AQ-001 — Controlled live SerpApi discovery
 
-Status: APPROVED
+Status: COMPLETED — the single approved controlled search was consumed and reviewed in Queue #1. No continuing live-provider authorization exists.
 
-Requested action: securely activate the real SerpApi credential and perform
-exactly one controlled live discovery search request after guardrail review.
-Use the non-search account quota check, preserve a 25-search reserve, keep
-max_queries=1, keep caching enabled, and perform no automatic retries.
-
-Review candidate quality and provenance, conservative compatibility, truthful
-search-attempt metering, and remaining free-tier allowance. Discovery permission
-does not authorize crawling destinations or treating snippets as product facts.
-
-Why approval is required: this activates a real external credential and may
-consume external account allowance.
-
-Preconditions: supervisor / Jon review of the implementation report and known
-concurrency limitation; passing required tests; secure credential handling; no
-unapproved production or infrastructure changes. Any additional gated runtime
-change needs explicit approval within its own stated scope.
-
-Safety: never place the credential or raw private provider payloads in this
-public repository or issue. Do not retry a failed controlled search automatically.
-
-Jon decision: APPROVED for the narrow scope below.
-Decision source: Jon's explicit “AQ-001 APPROVED BY JON” instruction in the active Codex session on 2026-09-18. The approval is also recorded in Procurement Supervisor Queue #1.
-
-### Approved execution scope — 2026-09-18
-
-- Exactly one controlled live SerpApi search through the existing procurement intelligence path.
-- Query: "I need a rear wiper arm for a 2015 Ford Edge".
-- `refresh_if_missing=true`, `minimum_evidence=discovered`, `max_queries=1`; cache-first behavior remains in force.
-- Account/quota API checks are allowed and do not count as search requests.
-- Preserve the 25-search reserve. Stop if allowance is at or below 25, quota check fails, credential/authentication fails, or the search errors.
-- No retries and no second search. No destination-page crawling or product verification; candidates remain DISCOVERED and compatibility must not be inferred.
-- Session-only secret entry if needed; do not persist or expose the credential.
-- No deployment/runtime restart, schema, authentication, source-policy, or dependency changes; no product-code changes or next roadmap step.
-- Post one sanitized controlled-attempt result to Queue #1, then stop for supervisor review.
-
-This approval authorizes only this controlled attempt; it is not continuing live-provider authorization.
+Scope completed: one cache-first `search_procurement_intelligence` discovery for the approved rear-wiper query, at most one search, no retries, no destination crawling, no verification, and no compatibility promotion. The result remained DISCOVERED with explicit unknowns.
 
 ## AQ-002 — Per-client external-discovery quota protection
 
-Status: APPROVED
-Jon decision: APPROVED in the active Codex session on 2026-09-18.
+Status: COMPLETED — implementation and tests were approved and reviewed. AQ-002 itself did not authorize deployment; deployment occurred only under AQ-003.
 
-Scope: inspect existing remote client identity, runtime limits, usage logging and durable usage events; implement the smallest additive configurable per-client discovery budget; test repeated/concurrent calls, identity isolation, truthful actual-search accounting, and restart safety using existing durable data. Use client_label + client_fingerprint. Cache hits and account checks must not consume search allowance; unknown potentially-started outcomes must fail conservatively.
+The implementation uses exact authenticated client_label + client_fingerprint identity, lifetime configurable caps, durable append-only reservations/settlements in `procurement_usage_events`, conservative unresolved holds, cache-first probes, and measured-attempt accounting.
 
-No live SerpApi search, secret persistence/container wiring, Docker restart/rebuild, schema/migration/dependency/source-policy/public-tool-schema/deployment changes, MCP publication, or unrelated improvements. If accurate enforcement requires schema/public request changes, weakened metering, or major architecture changes, stop for approval.
+## AQ-003 — Laptop deployment and durable validation
 
-Run focused and full Node tests; affected Python tests only if Python changes. Publish one sanitized AQ-002 Per-Client Discovery Quota Review Packet to Queue #1, then stop for supervisor review. This approval does not authorize deployment or live validation.
+Status: APPROVED BY JON; EXECUTION COMPLETE; awaiting supervisor review.
+
+Approved scope: deploy AQ-002 protection to the laptop staging runtime with owner=10 and tester-1=5 lifetime caps; preserve hardening; use existing Neon SELECT/INSERT ledger; validate cache/no-provider behavior, missing credentials, client isolation, concurrent enforcement, restart durability, truthful accounting, and ordinary MCP tools; keep SerpApi credentials absent; do not switch production or change schema, dependencies, auth, source policy, public schemas, or registry state.
+
+Result: scope passed. Four tester reservations plus one owner reservation were reconstructed across restart; tester exhaustion and owner isolation passed; exact test reservations were settled at zero; the historical tester hold was preserved; owner HTTP validation passed; actual SerpApi attempts were 0; production identity was unchanged.
+
+Decision source: Jon's explicit AQ-003 approval in the active Codex session on 2026-09-19.
+
+## AQ-004 — Runtime SerpApi activation and new live discovery
+
+Status: NOT REQUESTED / NOT APPROVED.
+
+Do not activate credentials, perform another live search, switch production, publish to the MCP Registry, or migrate to cloud hosting without a new explicit YES / NO decision.
 
 ## Request template
 
