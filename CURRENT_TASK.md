@@ -2,57 +2,49 @@
 
 ## ID
 
-SERPAPI-FREE-TIER-GUARDRAIL-001
+AQ-003 — Laptop deployment and durable per-client discovery validation
 
 ## Status
 
-Local implementation reported complete; awaiting supervisor / Jon review.
-This public control-plane setup starts no new product implementation.
+Jon-approved AQ-003 scope is complete and awaiting supervisor review. Production was not switched. No SerpApi credential is present in the runtime, and no AQ-004 work started.
 
 ## Objective
 
-Protect SerpApi free-tier discovery before activating real credentials.
+Deploy the AQ-002 per-client external-discovery protection to the laptop MCP staging runtime, preserve hardening, and validate durable quota behavior without provider activity.
 
-## Approved implementation scope
+## Approved scope
 
-Inspect the provider, intelligence path, cache, and relevant tests. Implement and
-test a quota safety guardrail using fake responses. Preserve max_queries=1 in the
-active intelligence path, no retries, cache-first behavior, and truthful
-external_discovery_requests_attempted accounting.
+- Lifetime pilot caps: owner=10 searches; tester-1=5 searches.
+- Rebuild/deploy staging while preserving the existing hardened container.
+- Use the existing Neon `procurement_usage_events` table with SELECT/INSERT only.
+- Validate cache/no-provider behavior, missing credentials, client isolation, concurrent enforcement, restart durability, truthful accounting, and ordinary MCP tools.
+- Keep browser crawling OFF and SerpApi credentials absent.
+- Do not change schema, dependencies, auth, source policy, public tool schemas, production, or public registry state.
 
-Before quota-consuming search, establish sufficient remaining account allowance
-without consuming a normal search as a quota probe. Retain 25 searches. Fail
-closed at or below the reserve, or when quota/account safety cannot be determined.
-Use structured non-secret errors such as quota_reserve_reached and
-quota_check_failed. Run focused tests and the broader affected Python suite.
+## Evidence completed
 
-## Existing implementation report
+- Preflight confirmed Neon connectivity and ledger read/append permissions.
+- Registry identities and caps were present: owner=10, tester-1=5.
+- Container hardening remained present: UID 10001, read-only filesystem, dropped capabilities, no-new-privileges, resource limits, loopback-only binding, and production browser crawling OFF.
+- Cache-only calls returned zero external attempts. Ordinary MCP tools remained functional.
+- Six refresh attempts (four tester-1, two owner) returned `missing_credentials` with zero actual SerpApi search attempts. No provider credential was present.
+- Four tester-1 reservations and one owner reservation were committed before any provider-capable subprocess. A fifth tester-1 admission was denied; owner remained isolated.
+- After staging restart, Neon reconstruction reported tester-1 held=5 (four AQ-003 holds plus one historical hold), owner held=1, tester exhaustion, owner remaining=9, and zero actual searches.
+- Recovery appended exactly five zero-attempt settlements. The historical tester-1 hold was preserved. Post-recovery totals returned to owner consumed=0/held=0 and tester-1 consumed=0/held=1.
+- Owner-authenticated loopback HTTP validation succeeded: initialize, all four tools, cache-only search with zero external attempts, and ordinary inventory access.
 
-The preceding local cycle reported the guardrail implemented and validated:
-focused 190 passed / 0 failed / 11 skipped; broader 596 passed / 0 failed /
-46 skipped. These are prior reported results, not tests rerun during this setup.
-The account preflight cannot atomically reserve quota against concurrent consumers;
-that limitation requires review before concurrent live use.
+## Deployment status
 
-## Constraints and stop gate
+The staging/validation runtime was restarted and healthy. Production remained on its original runtime/image; production identity was unchanged. No public MCP switch or ngrok publication was performed.
 
-No real API key, live discovery, deployment, runtime restart, schema/migration,
-dependency, auth/authz, client-key, source-policy, or infrastructure changes.
-No new product implementation is authorized during control-plane setup.
+## Limitations
 
-AQ-001 remains PENDING. Stop after publishing the six control files and permanent
-queue issue. Report the issue URL and wait for supervisor / human review.
+This was a provider-free pilot validation. No new SerpApi search was authorized or attempted in AQ-003. The durable concurrency/isolation exercise used the real Neon ledger through the quota module; the hold/restart harness was not a broad public-HTTP load test. Unresolved holds intentionally do not expire automatically. The caps are lifetime pilot caps, not periodic resets. Older workers or direct non-remote paths remain outside this boundary.
 
-## Control-plane publication status
+## Next action
 
-All six control files are published. [Procurement Supervisor Queue #1](https://github.com/lopezjon45-web/procurement-supervisor/issues/1)
-is live. The control plane is operational, and authenticated GitHub CLI access
-is restored. AQ-001 remains PENDING.
-
-This status update authorizes no product implementation or live provider activity.
-The only next action is supervisor review of SERPAPI-FREE-TIER-GUARDRAIL-001;
-credential activation and the controlled live test remain gated by AQ-001.
+Supervisor review of this completed AQ-003 packet only. Do not start AQ-004, activate SerpApi, switch production, publish to the MCP Registry, or migrate to cloud hosting without a new explicit approval.
 
 ## Cycle outcome
 
-BLOCKED
+APPROVAL_REQUIRED
