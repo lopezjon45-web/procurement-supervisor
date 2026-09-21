@@ -1,5 +1,31 @@
 # Current Task
 
+## AQ-005 — Bounded candidate-quality measurement
+
+Status: APPROVED; documentation sync complete; evidence selection and execution pending.
+
+AQ-005 is EXPLICITLY APPROVED BY JON ON 2026-09-21. Decision source: Jon's instruction beginning “AQ-005 is explicitly approved by Jon on 2026-09-21” in the active Codex session. This records Jon's decision, not an approval inferred by Codex. This documentation-only sync precedes AQ-005 execution.
+
+## Previous milestone
+
+AQ-004 is COMPLETED AND REVIEWED, as explicitly directed by Jon on 2026-09-21 in the active Codex session. Its single public test recorded one external search attempt and five discovered/unverified leads, all compatibility unknown. Account readings were 244 before and after; observed delta zero is not a billing/cache determination. Owner durable usage became 1/10; tester history was unchanged. Credentials were cleared, the temporary container removed, and production tunnel/health restored without changing the production container/image. Result: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5753722005 . This reviewed status does not establish candidate compatibility or broad procurement usefulness.
+
+## Approved scope and stop boundary
+
+Owner client only; baseline usage 1/10. Tester-1 must remain untouched. Select up to three distinct real procurement queries from existing tester-demand evidence, excluding AQ-004's rear-wiper query. Do not invent demand or pad the sample: use fewer when fewer suitable uncached queries exist. Each selected query gets at most one public MCP discovery call with refresh_if_missing=true, refresh_if_stale=true, minimum_evidence=discovered, and max_queries=1 per provider request. Cache hits consume zero and must be reported without repeating the query. No retries, second search per query, crawling, destination fetches, verification, or compatibility promotion.
+
+Use a temporary staging-only container from the existing pinned hardened staging image. Preserve UID 10001, read-only filesystem, dropped capabilities, no-new-privileges, tmpfs restrictions, memory/CPU/PID limits, loopback binding, unchanged Neon configuration and client registry, and browser crawling OFF. Production container/image remain unchanged. Hidden local entry and inherited runtime environment only for SERPAPI_API_KEY; never print or put the value in chat, arguments, files, images, or logs. Temporarily expose only staging through ngrok, without pooling or host-header override. Clear the key, remove only the temporary AQ-005 container, restore ngrok to localhost:3000, and verify production health and endpoint identity.
+
+Report each query's cache state, actual external attempts, lead count, source-type/relevance observations, and explicit unknowns without compatibility claims. Keep provider account readings separate from measured attempts; preserve the 25-search reserve as far as actual attempts allow. Verify no usage double-counting. Publish one sanitized AQ-005 packet to Supervisor Issue #1, then stop for review.
+
+## Truth rules and limitations
+
+DISCOVERED != VERIFIED; SEARCH SNIPPET != PRODUCT FACT; STALE != CURRENT; MODEL MENTION != COMPATIBLE; UNKNOWN != NO. Unknown facts remain null/unknown. Preserve exact source URLs, discovery versus checked timestamps, and all SourcePolicy permissions. Never use source_product_id as an MPN. No product/schema/dependency/auth/source-policy/public-schema/cloud/registry changes are authorized. Account checks are non-atomic against other consumers and may lag. Lifetime caps and conservative unresolved holds remain unchanged.
+
+## Historical AQ-003 task record (superseded status only)
+
+# Current Task
+
 ## ID
 
 AQ-003 — Laptop deployment and durable per-client discovery validation

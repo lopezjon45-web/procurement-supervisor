@@ -1,3 +1,9 @@
+# Current supervisor status — 2026-09-21
+
+AQ-004 is completed and reviewed. AQ-005 is explicitly approved by Jon for bounded owner-only candidate-quality measurement, up to three evidence-backed queries. See CURRENT_TASK.md and APPROVAL_QUEUE.md for the exact constraints. This update supersedes historical pending/not-approved status text below; it does not relax truth rules or authorize additional work.
+
+---
+
 # Procurement Supervisor
 
 Public shared control plane for Jon, ChatGPT, and Codex.
