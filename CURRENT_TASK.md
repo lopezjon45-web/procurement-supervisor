@@ -1,3 +1,25 @@
+# AQ-005 current execution status — COMPLETED, AWAITING REVIEW
+
+Supersedes the earlier owner-credential BLOCKED status. Jon explicitly resumed the same single eligible query. Hidden owner entry matched the unchanged registry before temporary-runtime creation; no auth or registry changes occurred.
+
+Query: replacement charger; device MacBook Air; model A2681; model_identifier omitted. Exactly one public MCP discovery returned cache miss → hit, refreshed/success, one measured external attempt, and five discovered/unverified leads with compatibility unknown. Persisted discovering query was the quoted A2681 variant. No retry, second search, destination fetch, crawling, verification, or compatibility promotion occurred.
+
+URL-level sample: three video links of unknown relevance, one forum path about SolarWinds replacement, and one knee-replacement blog path. Two visible paths appear unrelated; no lead demonstrated charger-procurement relevance from the inspected evidence. No destination content or product facts were verified, and no additional demand was invented.
+
+Provider account readings were 243 before and 242 after, reported separately from one measured search attempt. The 25-search reserve was preserved. Owner consumed 1 → 2 of 10, held 0 → 0, with exactly one reservation/settlement and no double-counting observed. Tester-1 and its historical hold remained unchanged.
+
+Key cleared, temporary AQ-005 container removed, production ngrok restored to localhost:3000 (PID 85241), public health/upstream independently verified. Production and original staging IDs, images, and start times remain unchanged and healthy. No production/code/schema/dependency/auth/source-policy/public-tool/cloud changes occurred.
+
+Prior AQ-005 preparation tests: Python 596 passed / 0 failed / 46 skipped; Node 57 passed / 0 failed / 0 skipped. These counts were not rerun in this resume. Existing truth rules, source-policy/provenance boundaries, account concurrency/lag limitations, lifetime caps, and conservative holds remain.
+
+Sanitized completed packet: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5753941066
+
+state: APPROVAL_REQUIRED
+task: AQ-005
+next_action: Supervisor review only; no additional search or roadmap step authorized.
+
+---
+
 # AQ-005 current execution status — BLOCKED
 
 The initial documentation sync completed and AQ-004 remains recorded as completed/reviewed. Jon's AQ-005 approval remains active within its exact bounds.
