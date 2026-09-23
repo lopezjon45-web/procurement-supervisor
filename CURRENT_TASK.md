@@ -1,3 +1,41 @@
+# AQ-008 — Approved; BLOCKED at tester credential prerequisite
+
+Jon explicitly directed AQ-007 to be recorded as SUPERVISOR-REVIEWED and approved AQ-008 in the active instruction beginning “Jon explicitly approved AQ-008: one outside-agent consumption test.” This records his decisions without changing strategy or treating unverified leads as product evidence.
+
+A separate Claude Code 2.1.236 client was found with an authenticated existing login. The securely entered bearer did not match the existing tester-1 registry entry. Execution stopped before temporary-container creation, public-routing changes, Claude inference, or any procurement call. No owner fallback, key rotation or repeat entry was attempted. The session bearer was cleared.
+
+Cache status and lead count were not measured; no actual tester feedback exists. Calls, discovery attempts, provider account requests, destination fetches, crawling and verification were all zero. Owner remains consumed 3/held 0 (cap 10); tester-1 remains consumed 0/held 1 (cap 5). Ledger digests, tool counts and reservations/settlements were unchanged; no ordinary usage row was expected because no call occurred.
+
+The reviewed AQ-007 image digest sha256:3d42bc32ebba29acbef470a27e26cab91c7697b5f7b59ebb61ef9ed873358818 remains preserved. Production and original staging retain their AQ-008 entry IDs, images, start times and configuration; browser OFF and SerpApi absent. The temporary AQ-008 container is absent. Production ngrok never moved from localhost:3000; one tunnel/process and local/public health were independently verified. Pre-existing production request inspection remains enabled; no authenticated traffic was sent through it. The setup-only inspection check was corrected without runtime changes before the actual credential prerequisite failed.
+
+Safe validation: Python before/final each 666 passed / 0 failed / 46 skipped; MCP/HTTP 57 passed / 0 failed / 0 skipped with provider/database doubles and outbound network denial; four mocked one-call guard checks passed. No product code/schema/dependency/auth/policy/public-tool/rollout/Registry/cloud changes. These checks do not substitute for outside-agent consumption feedback.
+
+Sanitized packet: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5788351714
+
+state: BLOCKED
+task: AQ-008
+next_action: Resolve secure local entry for the existing tester-1 bearer, then resume only the approved one-call cache-only scope. No further activity this cycle.
+
+All prior task-status entries below are historical. AQ-007 is supervisor-reviewed; AQ-008 remains approved within its original scope, with execution blocked rather than permission expanded.
+
+---
+
+# AQ-008 — Approved; outside-agent prerequisite check
+
+Jon explicitly approved AQ-008 in the active instruction beginning “Jon explicitly approved AQ-008: one outside-agent consumption test.” He directed AQ-007 to be recorded as supervisor-reviewed. Decision source is this active instruction; no durable session-message URL is available. AQ-007 is now SUPERVISOR-REVIEWED, without promoting its leads or establishing purchase suitability. AQ-008 is APPROVED, with execution conditional on a separate existing tester agent/client being available. Codex or a Codex subagent calling the tool does not qualify.
+
+Exact scope: reuse the verified AQ-007 image digest sha256:3d42bc32ebba29acbef470a27e26cab91c7697b5f7b59ebb61ef9ed873358818 in a temporary hardened AQ-008 container, unchanged registry/database/auth, browser OFF and SERPAPI_API_KEY absent. Existing tester-1 bearer through secure local entry only; no owner fallback. Confirm the separate tester before public routing changes. One tester search_procurement_intelligence call: query replacement charger, device MacBook Air, model A2681, model_identifier omitted, minimum_evidence discovered, both refresh flags false. Report stale honestly; stop on missing cache without refresh. No provider/account requests, destination fetch, crawling, verification or additional procurement-tool calls.
+
+Capture actual tester feedback on useful next steps, missing purchase facts, clarity of discovery/freshness/compatibility, and reuse intent. Feedback is not verified product evidence. Confirm zero attempts and unchanged consumed/held budgets; ordinary zero-attempt usage logging is expected. Clear bearer, remove only temporary AQ-008 container, restore production localhost:3000 and independently verify health even on failure. Preserve original containers/images. Publish one sanitized packet and reconcile controls; no code/schema/dependency/auth/policy/public-tool/production-rollout/Registry/cloud changes. End APPROVAL_REQUIRED or BLOCKED.
+
+state: CONTINUE
+task: AQ-008
+next_action: Confirm a separate tester agent/client is available before creating a public test route.
+
+All earlier status entries below are historical and superseded by this explicit approval/review record within its bounded scope.
+
+---
+
 # AQ-007 — Completed; APPROVAL_REQUIRED
 
 Jon explicitly approved this one controlled relevance regression in the active 2026-09-22 instruction. The approval covered the existing AQ-006 patch including the anchored-prefix correction, a separately tagged hardened temporary runtime, hidden owner-first credential entry, one public request/at most one external search, temporary exclusive ngrok routing, cleanup, and this sanitized supervisor publication/reconciliation. This records Jon's explicit decision; no further work is approved.
