@@ -48,3 +48,10 @@ AQ-001's single live-search authorization was consumed. AQ-002 implementation an
 ## Work-cycle outcome
 
 Each cycle must end in exactly one of CONTINUE, APPROVAL_REQUIRED, or BLOCKED, with the meaning defined in AI_SUPERVISOR.md.
+
+
+## AQ-007 — explicit approval and completed bounded execution, 2026-09-22
+
+Decision source: Jon's active instruction beginning “Jon explicitly approved AQ-007: one controlled live relevance regression.” No session-message URL is available. Scope: existing AQ-006 patch including anchored-prefix correction; one owner-authenticated public replacement-charger request with MacBook Air/A2681, omitted model identifier, discovered minimum and both refresh flags true; at most one search; cache-first, max_queries=1, no retries or destination fetch/verification; hidden session credentials, temporary hardened image/container and exclusive tunnel, then cleanup and production restore. This records the explicit approval without changing strategic decisions.
+
+The single authorized call completed with one measured search attempt and five unverified leads; owner usage 2 → 3, tester unchanged, reserve preserved, production restored. AQ-007 is execution-complete and APPROVAL_REQUIRED for review. The prior AQ-006 live-review request was authorized only through AQ-007; earlier AQ-007 credential-blocked/preparation status is historical. No ongoing search or production rollout authorization exists. Packet: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5788153252

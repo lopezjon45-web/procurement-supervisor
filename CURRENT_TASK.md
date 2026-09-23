@@ -1,3 +1,77 @@
+# AQ-007 — Completed; APPROVAL_REQUIRED
+
+Jon explicitly approved this one controlled relevance regression in the active 2026-09-22 instruction. The approval covered the existing AQ-006 patch including the anchored-prefix correction, a separately tagged hardened temporary runtime, hidden owner-first credential entry, one public request/at most one external search, temporary exclusive ngrok routing, cleanup, and this sanitized supervisor publication/reconciliation. This records Jon's explicit decision; no further work is approved.
+
+Request: replacement charger; device MacBook Air; model A2681; model_identifier omitted; minimum_evidence=discovered; both refresh flags true. Actual prioritized and persisted query: MacBook Air A2681 replacement charger. Result: one public call, one measured search attempt, miss → hit, success, five discovered/unverified leads, compatibility unknown. No retries, pagination, fallback, destination fetches, crawling, verification, or inferred product facts.
+
+Comparable URL evidence versus AQ-005: three apparently topical retail search/category leads, one topical information guide, one indeterminate opaque catalog lead, zero visibly off-topic leads; AQ-005 had two apparently off-topic leads and three indeterminate video URLs. Both returned five. This suggests a better visible topical mix, not proven procurement usefulness or compatibility; changed query/filtering, time and upstream ranking prevent causal attribution.
+
+Provider readings 242 → 241 are separate from one measured attempt; reserve 25 preserved. Owner consumed 2 → 3 of 10, held 0 → 0, exactly one reservation/settlement. Tester-1 consumed 0/held 1 and selected ledger digest unchanged. Credentials cleared, only temporary AQ-007 container removed, production routing restored to localhost:3000 and independently healthy. Both original containers/configurations/image tags and registry unchanged; browser OFF. Secret-free AQ-007 image retained: procurement-mcp:aq007-reviewed-20260922, sha256:3d42bc32ebba29acbef470a27e26cab91c7697b5f7b59ebb61ef9ed873358818.
+
+Prerequisites and final Python: 666 passed / 0 failed / 46 skipped each run; MCP/HTTP prerequisites including remote-test.js: 57 passed / 0 failed / 0 skipped with external outbound networking OS-blocked and I/O doubles. All 37 packaged runtime files match reviewed source; protected baseline files, inherited hardening and anchored correction preserved. No product code, dependency, schema, auth, source-policy, public-tool, production-container or registry publication changes.
+
+Sanitized packet: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5788153252
+
+state: APPROVAL_REQUIRED
+task: AQ-007
+next_action: Supervisor review only. No further search, deployment or roadmap step.
+
+All status text below is historical; earlier AQ-006 pending and AQ-007 blocked/in-progress statuses are superseded only by this completed bounded cycle. Truth rules and limitations remain in force.
+
+---
+
+# AQ-007 — explicit approval recorded; prerequisites in progress
+
+Jon explicitly approved AQ-007 again in the active instruction on 2026-09-22: one controlled live relevance regression using the existing AQ-006 patch including the anchored-prefix correction. This records his decision, not an inferred approval. Latest Issue #1 and remote control files were read; their latest published result is completed AQ-005. The earlier local AQ-007 credential blocker made no live attempt and is superseded for preparation only.
+
+Exact request: query `replacement charger`; device `MacBook Air`; model `A2681`; model_identifier omitted; minimum_evidence `discovered`; refresh_if_missing=true; refresh_if_stale=true. Existing owner identity only, validated by hidden bearer entry before hidden SerpApi entry. One public call, at most one search, max_queries=1, cache-first, no retries/pagination/fallback/destination fetching/crawling/verification; 25-search reserve and fail-closed allowance checks preserved. A hit is zero attempts and is not repeated.
+
+Separately tagged temporary image/container only; preserve production/original staging, hardening, auth, registry and Neon configuration. Disable temporary logging and ngrok inspection; exclusive temporary routing with no pooling, then clear credentials, remove only AQ-007 container, restore localhost:3000 and verify health/routing even on failure. Publish one sanitized AQ-007 packet including blocked outcomes, reconcile control files, then stop APPROVAL_REQUIRED or BLOCKED. This explicit publication instruction supersedes the earlier local “only after successful completion” wording.
+
+state: IN_PROGRESS
+task: AQ-007
+next_action: Complete prerequisite tests, image equality and hardening checks before live execution.
+
+---
+
+# AQ-007 — BLOCKED at credential prerequisite
+
+Jon explicitly approved one controlled live AQ-006 relevance regression. Approval
+was recorded from the active instruction; scope is one owner-authenticated public
+discovery for replacement charger with MacBook Air / A2681 context, max_queries=1,
+cache-first behavior, no retries/crawling/verification, and temporary hardened
+staging only. Production, original staging, schemas, auth, source policy, and
+public tools remain unchanged.
+
+Read-only preflight confirmed production `procurement-mcp` and original staging
+`procurement-mcp-aq003-validation` are healthy, separately tagged images exist,
+and both containers retain the recorded hardening. The owner registry is present
+and unchanged. Execution is BLOCKED because no secure hidden SerpApi entry is
+available in the inherited environment or approved local entries, and no matching
+hidden Keychain entry was found. No temporary image/container, ngrok swap, remote
+test, provider/account request, quota reservation, or publication was performed.
+
+state: BLOCKED
+task: AQ-007
+next_action: Provide/restore the approved secure hidden SerpApi entry and owner
+bearer entry; do not rotate credentials or broaden scope.
+
+---
+
+# AQ-006 — Local implementation complete; live regression review pending
+
+Jon explicitly approved the deterministic relevance-screening patch in the active session. Full-context discovery priority, bounded 20-row/5-lead screening, one-query default, and request-cache version 2 are implemented locally with focused tests. Historical runs are preserved and no automatic refresh was introduced.
+
+Final network-blocked tests: focused Python 232 passed / 0 failed / 11 skipped; full Python 657 passed / 0 failed / 46 skipped; MCP regressions 54 passed / 0 failed / 0 skipped. The focused count is included in the full count. Node HTTP-listener tests were excluded to honor the networking ban.
+
+Implementation details and limitations: docs/aq006-relevance-screening.md. Lexical selection remains unverified evidence, with possible false positives/negatives; unknown compatibility is preserved. Public schemas, permissions, auth, dependencies, production and deployment state were not changed. No live requests or publication occurred.
+
+state: APPROVAL_REQUIRED
+task: AQ-006
+next_action: Review the local patch and authorize any bounded live regression separately.
+
+---
+
 # AQ-005 current execution status — COMPLETED, AWAITING REVIEW
 
 Supersedes the earlier owner-credential BLOCKED status. Jon explicitly resumed the same single eligible query. Hidden owner entry matched the unchanged registry before temporary-runtime creation; no auth or registry changes occurred.
