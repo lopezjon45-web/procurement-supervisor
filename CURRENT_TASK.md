@@ -10,8 +10,8 @@ a sanitized handoff within the existing supervisor workflow.
 Implement deterministic relevance admission before request-head promotion,
 retail search/category handling with synthetic AQ-005/AQ-007 URL-shape
 regressions, planner/relevance/request-cache version 3, explicit fresh /
-stale-servable / hard-stale / quarantined states, and same-version last-known-good.
-Fresh lasts 24 hours; stale-servable lasts at most 24 additional hours, subject
+stale_servable / hard_stale / quarantined states, and same-version last-known-good.
+Fresh lasts 24 hours; stale_servable lasts at most 24 additional hours, subject
 to stricter stored/current SourcePolicy limits. Preserve exact URLs and original
 provenance. Rejected candidates do not enter current intelligence records for
 diagnostics. Add only safe typed screening summaries and response diagnostics;

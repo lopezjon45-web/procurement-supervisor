@@ -18,8 +18,8 @@ No durable session-message URL was supplied.
   last-known-good. Cache admission precedes head promotion. Rejected leads are
   absent from current intelligence records and revisions; quarantine metadata
   retains only aggregate typed counts and safe reason codes.
-- Active cache content is fresh for 24 hours, stale-servable for at most 24
-  more hours, then hard-stale. Stricter stored/current SourcePolicy limits take
+- Active cache content is fresh for 24 hours, stale_servable for at most 24
+  more hours, then hard_stale. Stricter stored/current SourcePolicy limits take
   precedence. Failed or quarantined refreshes retain same-version permitted
   stale evidence without relabeling original timestamps.
 - Additive MCP response fields are `content_state`, `content_reason_code`,
@@ -49,10 +49,10 @@ Documentation/controls: `docs/aq010-slice1a.md` (new), `CURRENT_TASK.md`,
 
 Pre-change safe baseline: Python **666 passed / 0 failed / 46 skipped**;
 Node **54 passed / 0 failed / 0 skipped**. Final focused affected Python:
-**255 passed / 0 failed / 11 skipped**. Final full Python:
-**675 passed / 0 failed / 46 skipped**. Final safe MCP/HTTP Node:
+**257 passed / 0 failed / 11 skipped**. Final full Python:
+**677 passed / 0 failed / 46 skipped**. Final safe MCP/HTTP Node:
 **57 passed / 0 failed / 0 skipped**. Focused cases are included in the full
-Python suite; counts are separate runs, not additive. Python tests ran with
+Python suite; counts are separate runs, not additive. A post-handoff correction aligned the additive content-state values to `stale_servable` and `hard_stale`, closed the typed screening reason set, and added a synthetic opaque-catalog evidence regression; its pre-correction focused baseline was 255 passed / 0 failed / 11 skipped. Python tests ran with
 external networking denied and PostgreSQL opt-ins unset. Node tests denied
 external networking, allowed loopback only for the inspected HTTP test, and
 used database/provider doubles. No smoke-test.js or placeholder npm test ran.

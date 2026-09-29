@@ -14,8 +14,8 @@ records below are preserved, not current blockers.
 The same explicit instruction approves control-plane synchronization and
 bounded local Slice 1A implementation/tests: relevance admission before head
 promotion; retail route handling and synthetic AQ-005/AQ-007 regressions;
-planner/relevance/request-cache v3; fresh, stale-servable, hard-stale,
-quarantined states; 24-hour fresh plus at most 24-hour stale-servable subject to
+planner/relevance/request-cache v3; fresh, stale_servable, hard_stale,
+quarantined states; 24-hour fresh plus at most 24-hour stale_servable subject to
 stricter SourcePolicy; same-version last-known-good; additive safe diagnostics;
 and necessary documentation. Existing tool names, public inputs, legacy
 status/cache-status values, exact URLs, provenance, and evidence boundaries stay.
