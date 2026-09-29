@@ -1,5 +1,22 @@
 # Current decisions — AQ-010 / Stage 1
 
+Jon remains the final YES / NO authority. AQ-010 remains the sole current
+Roadmap Stage 1 task. Slice 1A is COMPLETED / SUPERVISOR-REVIEWED, with the
+empty-success admission correction included in the accepted implementation.
+Corrected Python validation: 682 passed / 0 failed / 46 skipped. Full safe Node
+validation: 57 passed / 0 failed / 0 skipped. Real PostgreSQL integration and
+concurrency behavior remain unvalidated.
+
+Slice 1B and migration 006 remain NOT APPROVED. Design and supervisor review
+are the only next activity; this decision authorizes no migration or Slice 1B
+implementation.
+
+---
+
+## Earlier AQ-010 decisions — historical
+
+# Current decisions — AQ-010 / Stage 1
+
 Jon's active instruction beginning “YES — I approve AQ-010 Slice 1A
 implementation and tests” accepts and closes AQ-009 Stage 0. AQ-010 is the sole
 current Roadmap Stage 1 task. Slice 1A implementation, tests, documentation,

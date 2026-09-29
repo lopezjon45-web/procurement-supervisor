@@ -1,3 +1,19 @@
+# Codex Report — AQ-010 Slice 1A supervisor reconciliation
+
+AQ-010 Slice 1A is COMPLETED / SUPERVISOR-REVIEWED. The accepted implementation
+includes the empty-success admission correction, so a successful but empty or
+all-rejected first discovery does not create an accepted request-cache head.
+Corrected Python validation: 682 passed / 0 failed / 46 skipped. Full safe Node
+validation: 57 passed / 0 failed / 0 skipped. Real PostgreSQL integration and
+concurrency behavior remain unvalidated.
+
+Slice 1B and migration 006 remain NOT APPROVED. The next activity is design and
+supervisor review only. Jon remains the final YES / NO authority.
+
+---
+
+## Earlier AQ-010 implementation report — historical
+
 # Codex Report — AQ-010 Slice 1A Cache/Relevance Integrity
 
 **Outcome: APPROVAL_REQUIRED.** AQ-009 Stage 0 is accepted/closed by Jon's

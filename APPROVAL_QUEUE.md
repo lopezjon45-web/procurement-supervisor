@@ -1,5 +1,21 @@
 # Current approval queue — AQ-010
 
+Jon remains the final YES / NO authority. AQ-010 Slice 1A is COMPLETED /
+SUPERVISOR-REVIEWED, including the empty-success admission correction. Corrected
+Python validation: 682 passed / 0 failed / 46 skipped. Full safe Node validation:
+57 passed / 0 failed / 0 skipped. Real PostgreSQL integration and concurrency
+behavior remain unvalidated.
+
+Slice 1B and migration 006 are NOT APPROVED. The next activity is design and
+review only; migration creation and Slice 1B implementation await a separate
+decision.
+
+---
+
+## Earlier AQ-010 approval queue — historical
+
+# Current approval queue — AQ-010
+
 Only Jon can decide YES / NO. Pending means no execution authorization.
 
 ## AQ-009 — Stage 0 ACCEPTED / CLOSED

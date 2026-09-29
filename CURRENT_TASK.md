@@ -1,3 +1,22 @@
+# AQ-010 — Slice 1A completed / supervisor-reviewed
+
+AQ-010 remains the sole current Roadmap Stage 1 task. Jon remains the final
+YES / NO authority. Slice 1A is COMPLETED / SUPERVISOR-REVIEWED. The accepted
+implementation includes the empty-success admission correction: an accepted
+request-cache head requires a successful result with at least one admitted lead.
+
+Corrected Python validation: 682 passed / 0 failed / 46 skipped. Full safe Node
+validation: 57 passed / 0 failed / 0 skipped. Real PostgreSQL integration and
+concurrency behavior remain unvalidated.
+
+Slice 1B and migration 006 remain NOT APPROVED. The next activity is Slice 1B /
+migration design and supervisor review only; no migration or product implementation
+is authorized by this status.
+
+---
+
+## Earlier AQ-010 task record — historical
+
 # AQ-010 — Cache/Relevance Integrity, Slice 1A
 
 **Single current task: AQ-010. Roadmap stage: 1. Slice 1A: APPROVED BY JON.**
