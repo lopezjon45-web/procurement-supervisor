@@ -1,5 +1,18 @@
 # Procurement Supervisor — current navigation
 
+**AQ-010 Cache/Relevance Integrity** is the sole current Roadmap Stage 1 task.
+Jon accepted/closed AQ-009 Stage 0 and approved only AQ-010 Slice 1A local
+implementation, tests, control synchronization, and a sanitized Issue #1
+handoff. Slice 1A is implemented locally and awaits supervisor/Jon review;
+Slice 1B and migration 006 remain unapproved. See
+[CURRENT_TASK.md](CURRENT_TASK.md), [APPROVAL_QUEUE.md](APPROVAL_QUEUE.md), and
+[CODEX_REPORT.md](CODEX_REPORT.md) for the current scope and evidence. The
+previous AQ-009 navigation below is historical after this decision.
+
+---
+
+## Prior AQ-009 navigation — historical
+
 Public shared control plane for Jon, ChatGPT, and Codex. Jon is the final YES / NO
 authority; ChatGPT is strategic supervisor and plan keeper; Codex executes only
 the exact approved scope.

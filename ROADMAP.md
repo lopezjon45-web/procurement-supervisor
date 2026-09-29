@@ -286,9 +286,10 @@ The dependency tiers and stricter measured-need rule are defined in
 
 ## Current Navigation
 
-Current foundation task: **AQ-009 Architecture Resilience Baseline — Stage 0**.
-
-After AQ-009 is reviewed, cache/relevance hardening is the first implementation
-stage. Schema/migration creation or application, new dependencies, production
-deployment, authentication changes, provider activation, or transaction
-implementation remain separate approval gates.
+**AQ-009 Architecture Resilience Baseline — Stage 0 is accepted and closed.**
+**AQ-010 Cache/Relevance Integrity — Stage 1 is current.** Jon approved only
+Slice 1A local implementation and tests under the bounds in CURRENT_TASK.md.
+Slice 1A is locally complete and awaits review; Slice 1B and migration 006
+remain separate gates. New dependencies, production
+deployment, authentication changes, provider activation, and transaction
+implementation are not authorized by this Stage 1A decision.

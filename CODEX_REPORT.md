@@ -1,3 +1,85 @@
+# Codex Report — AQ-010 Slice 1A Cache/Relevance Integrity
+
+**Outcome: APPROVAL_REQUIRED.** AQ-009 Stage 0 is accepted/closed by Jon's
+active instruction beginning “YES — I approve AQ-010 Slice 1A implementation
+and tests.” AQ-010 is the sole current Roadmap Stage 1 task. Slice 1A was
+implemented locally within that approval and is pending supervisor/Jon review.
+No durable session-message URL was supplied.
+
+## Implemented local contract
+
+- Shared deterministic lead screening admits topical readable paths and named
+  search terms on recognized search routes, including the synthetic AQ-007
+  retail URL shapes. It rejects the known AQ-005 video/discussion and visibly
+  off-topic patterns. Opaque/informational shapes remain indeterminate. This is
+  selection only; it verifies no product or seller fact.
+- Request-cache identity is version 3 with explicit planner and relevance
+  versions. Old runs and heads remain stored but cannot serve as version-3
+  last-known-good. Cache admission precedes head promotion. Rejected leads are
+  absent from current intelligence records and revisions; quarantine metadata
+  retains only aggregate typed counts and safe reason codes.
+- Active cache content is fresh for 24 hours, stale-servable for at most 24
+  more hours, then hard-stale. Stricter stored/current SourcePolicy limits take
+  precedence. Failed or quarantined refreshes retain same-version permitted
+  stale evidence without relabeling original timestamps.
+- Additive MCP response fields are `content_state`, `content_reason_code`,
+  `screening_summary`, `provider_screening_summary`, `refresh_outcome`, and
+  `served_last_known_good`. Existing tool names, public inputs, and legacy
+  status/cache-status vocabularies remain. A failed refresh can return
+  `status=stale` with `discovery_status=error`, its safe error code, and truthful
+  measured attempts. A quarantined refresh without fallback returns `status=error`.
+
+## Changed local files
+
+Product: `procurement/core/relevance.py` (new), `procurement/core/planner.py`,
+`procurement/core/discovery.py`, `procurement/core/discovery_request_cache.py`,
+`procurement/discovery/serpapi.py`, `procurement/intelligence_cli.py`.
+
+Tests: `procurement/tests/test_discovery_request_cache.py`,
+`procurement/tests/test_intelligence_cli.py`,
+`procurement/tests/test_serpapi_relevance.py`,
+`procurement/tests/test_serpapi_discovery.py`,
+`procurement/tests/test_evidence_level.py`, `mcp-server/policy-test.js`, and
+`mcp-server/browseroff-test.js`.
+
+Documentation/controls: `docs/aq010-slice1a.md` (new), `CURRENT_TASK.md`,
+`APPROVAL_QUEUE.md`, `DECISIONS.md`, and `CODEX_REPORT.md`.
+
+## Validation and limits
+
+Pre-change safe baseline: Python **666 passed / 0 failed / 46 skipped**;
+Node **54 passed / 0 failed / 0 skipped**. Final focused affected Python:
+**255 passed / 0 failed / 11 skipped**. Final full Python:
+**675 passed / 0 failed / 46 skipped**. Final safe MCP/HTTP Node:
+**57 passed / 0 failed / 0 skipped**. Focused cases are included in the full
+Python suite; counts are separate runs, not additive. Python tests ran with
+external networking denied and PostgreSQL opt-ins unset. Node tests denied
+external networking, allowed loopback only for the inspected HTTP test, and
+used database/provider doubles. No smoke-test.js or placeholder npm test ran.
+
+The opt-in PostgreSQL fixture creates and drops a temporary database, so it
+was not run under the approved no-persistent-mutation boundary. Real PostgreSQL
+SQL execution/concurrency and production behavior remain unvalidated. The
+lexical selector can still miss useful opaque/informational pages or admit
+keyword-stuffed leads; no result is verified or compatibility-checked.
+Repeated refresh after quarantine is possible until Slice 1B coordination and
+backoff are separately approved.
+
+No schema/DDL/migration 006, dependency, production/container/deployment,
+provider/account request, live procurement MCP call, credential/auth,
+SourcePolicy, destructive cache/data, or transaction/payment action occurred.
+No source URLs were fetched. Only local code/tests/docs and the approved
+supervisor controls/handoff changed. Historical supervisor records and
+AI_SUPERVISOR.md remain intact.
+
+state: APPROVAL_REQUIRED
+task: AQ-010 Slice 1A
+next_action: Supervisor/Jon review of Slice 1A implementation and evidence before Slice 1B or migration 006.
+
+---
+
+## AQ-009 report — historical after Stage 0 acceptance
+
 # Codex Report — AQ-009 Architecture Resilience Baseline
 
 **Outcome: APPROVAL_REQUIRED.** Roadmap stage: **0**.

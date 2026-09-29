@@ -1,5 +1,14 @@
 # AQ-009 Control Sync
 
+## Later Stage 0 disposition
+
+Jon's active instruction beginning “YES — I approve AQ-010 Slice 1A
+implementation and tests” accepts and closes AQ-009 Stage 0 and makes AQ-010
+the sole current Roadmap Stage 1 task. This later explicit decision supersedes
+the pending foundation-review status below; the original AQ-009 publication
+record and its evidence limitations remain historical. No durable
+session-message URL was supplied.
+
 ## Source and evidence boundary
 
 Recorded on 2026-09-28 from Jon's active instruction titled **“Codex Execution

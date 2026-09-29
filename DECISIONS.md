@@ -1,3 +1,21 @@
+# Current decisions — AQ-010 / Stage 1
+
+Jon's active instruction beginning “YES — I approve AQ-010 Slice 1A
+implementation and tests” accepts and closes AQ-009 Stage 0. AQ-010 is the sole
+current Roadmap Stage 1 task. Slice 1A implementation, tests, documentation,
+control reconciliation, and the sanitized supervisor handoff are approved within
+the exact bounds in CURRENT_TASK.md and APPROVAL_QUEUE.md. No durable
+session-message URL was supplied. Jon remains the final YES / NO authority.
+
+Cache admission is a lead-selection heuristic, never source permission or a
+verified product, seller, price, stock, identity, or compatibility claim.
+Preserve original URLs/timestamps, SourcePolicy limits, unknowns, budget guardrails,
+one-query/20-row/five-lead bounds, and no automatic retry. Slice 1B and migration
+006 require separate review/approval. Earlier AQ-009 directions below are
+historical after Jon's acceptance; permanent evidence rules remain active.
+
+---
+
 # Current decisions — AQ-009 / 2026-09-28
 
 ## Authority and decision source

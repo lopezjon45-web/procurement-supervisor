@@ -1,3 +1,43 @@
+# AQ-010 — Cache/Relevance Integrity, Slice 1A
+
+**Single current task: AQ-010. Roadmap stage: 1. Slice 1A: APPROVED BY JON.**
+AQ-009 Stage 0 is ACCEPTED and closed by Jon's active instruction beginning
+“YES — I approve AQ-010 Slice 1A implementation and tests.” No durable
+session-message URL was supplied. This approval includes this control-plane
+sync, bounded local implementation, synthetic/mocked tests, documentation, and
+a sanitized handoff within the existing supervisor workflow.
+
+Implement deterministic relevance admission before request-head promotion,
+retail search/category handling with synthetic AQ-005/AQ-007 URL-shape
+regressions, planner/relevance/request-cache version 3, explicit fresh /
+stale-servable / hard-stale / quarantined states, and same-version last-known-good.
+Fresh lasts 24 hours; stale-servable lasts at most 24 additional hours, subject
+to stricter stored/current SourcePolicy limits. Preserve exact URLs and original
+provenance. Rejected candidates do not enter current intelligence records for
+diagnostics. Add only safe typed screening summaries and response diagnostics;
+retain existing tool names, public inputs, and legacy status/cache-status values.
+
+Run baseline, focused, and safe broader regression tests with synthetic or
+mocked provider data and external networking denied. Record exact counts,
+changed files, response semantics, and limitations in CODEX_REPORT.md. If 1A
+requires migration 006, a dependency, public-input schema or SourcePolicy change,
+or other material expansion, stop for a new decision. No live PostgreSQL test
+without an explicitly safe existing fixture and no persistent mutation.
+
+Slice 1B coordination, migration/DDL, provider activation or account request,
+live MCP call, production/deployment, auth/credentials, dependencies, destructive
+cache work, and transaction/payment work are outside this approval. After 1A,
+publish one sanitized handoff in permanent Issue #1 and stop for review. Do not
+begin 1B.
+
+state: APPROVAL_REQUIRED
+task: AQ-010 Slice 1A
+next_action: Supervisor/Jon review of the local Slice 1A implementation and test evidence. Do not begin Slice 1B or migration 006.
+
+---
+
+## AQ-009 prior current record — historical after Jon's acceptance
+
 # AQ-009 — Architecture Resilience Baseline
 
 **Single current task: AQ-009. Roadmap stage: 0.**

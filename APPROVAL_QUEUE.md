@@ -1,4 +1,39 @@
-# Current approval queue — AQ-009
+# Current approval queue — AQ-010
+
+Only Jon can decide YES / NO. Pending means no execution authorization.
+
+## AQ-009 — Stage 0 ACCEPTED / CLOSED
+
+Jon accepted and closed AQ-009 Stage 0 in the active instruction beginning
+“YES — I approve AQ-010 Slice 1A implementation and tests.” The published
+architecture remains the foundation; its historical publication and review
+records below are preserved, not current blockers.
+
+## AQ-010 — Stage 1 Slice 1A APPROVED BY JON
+
+The same explicit instruction approves control-plane synchronization and
+bounded local Slice 1A implementation/tests: relevance admission before head
+promotion; retail route handling and synthetic AQ-005/AQ-007 regressions;
+planner/relevance/request-cache v3; fresh, stale-servable, hard-stale,
+quarantined states; 24-hour fresh plus at most 24-hour stale-servable subject to
+stricter SourcePolicy; same-version last-known-good; additive safe diagnostics;
+and necessary documentation. Existing tool names, public inputs, legacy
+status/cache-status values, exact URLs, provenance, and evidence boundaries stay.
+Use mocked provider data and deny external networking.
+
+Slice 1B, migration 006 or other DDL, cross-process refresh ownership, bridge
+coordination, new dependencies, provider/account requests, live MCP calls,
+production/deployment, auth/credentials, SourcePolicy changes, destructive
+cache work, and transaction/payment work are NOT APPROVED. Stop if 1A requires
+any such expansion. Publish one sanitized handoff after tests, then stop
+APPROVAL_REQUIRED for supervisor/Jon review before 1B or migration 006.
+
+Slice 1A local implementation and safe tests are complete; review is now
+**PENDING**. Completion does not approve deployment, Slice 1B, or migration 006.
+
+---
+
+## AQ-009 prior queue record — historical
 
 Only Jon can decide YES / NO. Pending means no execution authorization.
 
