@@ -1,3 +1,78 @@
+# Procurement Supervisor — current navigation
+
+Public shared control plane for Jon, ChatGPT, and Codex. Jon is the final YES / NO
+authority; ChatGPT is strategic supervisor and plan keeper; Codex executes only
+the exact approved scope.
+
+## Current position
+
+**AQ-009 — Architecture Resilience Baseline** is the single current task,
+advancing **Roadmap Stage 0**. Documentation preparation and publication are
+approved: Jon replied **“yes”** to the prepared eight-file packet, authorizing
+commit/push, one sanitized Issue #1 handoff, and verification. The next gate is
+supervisor review. Cycle state: **APPROVAL_REQUIRED**.
+No product implementation is authorized.
+
+**AQ-008 is COMPLETED / SUPERVISOR-REVIEWED** per Jon's supplied handoff:
+one independent outside phone-agent cache-only call; STALE with five DISCOVERED
+leads; compatibility/freshness unknown. Reported Neon evidence: one tester row,
+one search call, zero other tool calls, zero measured external discovery, zero
+reservations/settlements. Individual-row `verification_fetches` remains
+**NULL / not measured**, not independently measured zero. Feedback identified
+understandable structure but stale, non-actionable and clearly irrelevant leads.
+The earlier credential blocker is historical; details and attribution are in
+[AQ-009_CONTROL_SYNC.md](AQ-009_CONTROL_SYNC.md).
+
+## Read before each cycle
+
+Read the existing governance/control sequence first:
+
+1. [AI_SUPERVISOR.md](AI_SUPERVISOR.md) — binding governance and evidence invariants.
+2. [DECISIONS.md](DECISIONS.md) — latest explicit direction and retained locked decisions.
+3. [CURRENT_TASK.md](CURRENT_TASK.md) — the single current task and stop boundary.
+4. [APPROVAL_QUEUE.md](APPROVAL_QUEUE.md) — exact decisions and pending approval gates.
+5. [CODEX_REPORT.md](CODEX_REPORT.md) — work, evidence, limitations and outcome.
+
+Then read the foundation and reconciliation documents:
+
+- [ROADMAP.md](ROADMAP.md) — authoritative long-term navigation through stages 0–12.
+- [ARCHITECTURE_RESILIENCE.md](ARCHITECTURE_RESILIENCE.md) — authority, dependencies, degraded behavior and failure requirements.
+- [AQ-009_CONTROL_SYNC.md](AQ-009_CONTROL_SYNC.md) — supplied AQ-008 completion and AQ-009 scope/approval provenance.
+
+Every task must identify its roadmap stage. Architecture targets are not claims
+of implemented capability. After foundation review, cache/relevance hardening
+is the first implementation direction; exact implementation and gated actions
+still require separate approval.
+
+Use the existing permanent
+[Procurement Supervisor Queue Issue #1](https://github.com/lopezjon45-web/procurement-supervisor/issues/1)
+for sanitized handoffs and decisions. Keep it open; do not create a replacement.
+Earlier issue bodies/comments and the records below remain historical, not
+current blockers or renewed approval.
+
+## Unchanged boundaries
+
+The permanent evidence rules and AI_SUPERVISOR.md remain unchanged. This cycle
+authorizes no product/runtime/schema/dependency/auth/provider/source-policy
+changes, production deployment, procurement MCP test calls, credential rotation,
+transactions/payment/billing, or cache deletion/invalidation. Do not create or
+apply migration 006.
+
+Do not publish secrets, credentials, password-bearing database URLs, bearer
+tokens, customer data, raw provider payloads, or private logs. Each cycle ends in
+exactly one of CONTINUE, APPROVAL_REQUIRED, or BLOCKED as defined in the contract.
+
+---
+
+<!-- AQ009_HISTORICAL_RECORDS -->
+## Historical records — preserved verbatim
+
+Everything below is historical. Earlier headings, task IDs, stop states, and
+approval restrictions describe their original cycles; they are not additional
+current tasks or renewed execution authority. Only the current AQ-009 section
+above governs this cycle. Standing evidence rules and unmodified approval gates
+remain in force.
+
 # AQ-008 — Approved; BLOCKED at tester credential prerequisite
 
 Jon explicitly directed AQ-007 to be recorded as SUPERVISOR-REVIEWED and approved AQ-008 in the active instruction beginning “Jon explicitly approved AQ-008: one outside-agent consumption test.” This records his decisions without changing strategy or treating unverified leads as product evidence.

@@ -1,3 +1,88 @@
+# Current approval queue — AQ-009
+
+Only Jon can decide YES / NO. Pending means no execution authorization.
+
+## AQ-008 — COMPLETED / SUPERVISOR-REVIEWED
+
+Recorded from Jon's supplied [AQ-009_CONTROL_SYNC.md](AQ-009_CONTROL_SYNC.md):
+the tester credential was subsequently rotated under explicit approval, and an
+independent phone agent completed one cache-only consumption call. STALE, five
+DISCOVERED leads, unknown compatibility/freshness. Reported Neon evidence:
+one tester row, one search call, zero other tools, zero measured external
+discovery, zero reservations/settlements. Individual-row `verification_fetches`
+was **NULL / not measured**, not independently measured zero. Feedback exposed
+irrelevant, stale, non-actionable leads despite understandable structure.
+
+The earlier blocked attempt is retained below as history. Its no-rotation
+restriction described that attempt; the later rotation is recorded as completed
+under Jon's supplied approval, not performed or newly authorized here.
+
+## AQ-009 — Architecture Resilience Baseline / Stage 0
+
+- Documentation/control-plane preparation: **APPROVED BY JON** in the active
+  instruction titled “Codex Execution Prompt — AQ-009 Architecture Resilience
+  Baseline”; source recorded in AQ-009_CONTROL_SYNC.md; no durable session-message
+  URL supplied.
+- Commit/push and the subsequent sanitized Issue #1 handoff: **APPROVED BY JON**
+  through his explicit **“yes”** to the prepared eight-file review packet and
+  proposed commit message in this active session; no durable message URL supplied.
+- Foundation/supervisor review: **PENDING**, after publication.
+- Product implementation: **NOT AUTHORIZED** by preparation, publication, or this entry.
+
+### Concrete publication request
+
+Add ROADMAP.md, ARCHITECTURE_RESILIENCE.md, and AQ-009_CONTROL_SYNC.md. Update
+CURRENT_TASK.md, DECISIONS.md, APPROVAL_QUEUE.md, CODEX_REPORT.md, and README.md.
+Keep AI_SUPERVISOR.md and all historical text unchanged.
+
+Approved commit message: `docs: reconcile AQ-008 and establish AQ-009 resilience baseline`.
+
+Jon's YES authorizes committing/pushing this exact documentation scope, posting one sanitized
+handoff to the existing permanent
+[Supervisor Queue Issue #1](https://github.com/lopezjon45-web/procurement-supervisor/issues/1),
+and verifying the resulting commit/files. Stop APPROVAL_REQUIRED for supervisor review.
+
+Why approval is required: Jon explicitly instructed “STOP for my YES before
+committing or pushing anything.” The agreed workflow and mandatory gates in
+AI_SUPERVISOR.md also require staying within the exact approved publication scope.
+
+Risk/cost: public documentation publication only; no procurement/provider quota,
+runtime action, or data mutation. Use sanitized summaries; no secrets or private
+logs. Alternative: retain the local draft pending review. Rollback: an explicitly
+approved follow-up documentation correction/revert preserving Git history, with
+no product/data rollback.
+
+Jon publication decision: **YES**, recorded from his reply to the prepared
+publication packet. The final commit and remote-file verification evidence will
+be recorded in the one approved Issue #1 handoff. This decision does not approve
+the foundation review outcome or any product implementation.
+
+### Excluded actions
+
+No product code, migration 006 or any schema/migration creation/application,
+dependencies/Redis, auth/authz, credentials/rotation, providers/SerpApi/discovery,
+procurement MCP test calls, source policy, production containers/deployment,
+transactions/payment/billing, or cache deletion/invalidation.
+
+Next gate after publication: supervisor review of the foundation. Cache/relevance
+hardening is the first later implementation stage and requires separately scoped
+approval. No AQ-010 or other concurrent task is opened.
+
+state: APPROVAL_REQUIRED
+task: AQ-009
+next_action: Supervisor review of the published AQ-009 foundation before any implementation.
+
+---
+
+<!-- AQ009_HISTORICAL_RECORDS -->
+## Historical records — preserved verbatim
+
+Everything below is historical. Earlier headings, task IDs, stop states, and
+approval restrictions describe their original cycles; they are not additional
+current tasks or renewed execution authority. Only the current AQ-009 section
+above governs this cycle. Standing evidence rules and unmodified approval gates
+remain in force.
+
 # AQ-008 — Approved; BLOCKED at tester credential prerequisite
 
 Jon explicitly directed AQ-007 to be recorded as SUPERVISOR-REVIEWED and approved AQ-008 in the active instruction beginning “Jon explicitly approved AQ-008: one outside-agent consumption test.” This records his decisions without changing strategy or treating unverified leads as product evidence.

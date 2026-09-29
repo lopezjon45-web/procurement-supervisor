@@ -1,3 +1,140 @@
+# Codex Report — AQ-009 Architecture Resilience Baseline
+
+**Outcome: APPROVAL_REQUIRED.** Roadmap stage: **0**.
+Documentation prepared and publication explicitly approved by Jon's **“yes”**
+to the eight-file review packet. Foundation review remains pending.
+
+## Source, inspection, and governance comparison
+
+Read the six current GitHub control files and permanent Supervisor Queue Issue #1.
+Baseline: `0e933fc3c4f5936c17020f09b73e43d02d09c8b0`; latest issue packet was the
+historical AQ-008 credential blocker. Compared that state with Jon's active
+“Codex Execution Prompt — AQ-009 Architecture Resilience Baseline” and all three
+included documents. No material governance conflict was found: the contract
+gives precedence to Jon's latest explicit decision, and his current scope
+supersedes the stale blocker while retaining approval gates and evidence rules.
+
+The later AQ-008 completion is recorded from the supplied handoff, not remeasured
+by Codex. [AQ-009_CONTROL_SYNC.md](AQ-009_CONTROL_SYNC.md) preserves source
+attribution and the absence of a durable session-message or separate completion
+evidence URL.
+
+## Prepared changes
+
+| File | Change |
+| --- | --- |
+| ROADMAP.md | Add authoritative long-term navigation, all stages 0–12, invariants, dependency policy and current Stage 0 direction. |
+| ARCHITECTURE_RESILIENCE.md | Add the target authority/dependency model, adapters, explicit degradation, health semantics, disposable Redis, transaction outbox/idempotency, Principal abstraction and failure tests. |
+| AQ-009_CONTROL_SYNC.md | Add the supplied AQ-008 completion evidence, limitations, AQ-009 decision and exact publication/review gates. |
+| CURRENT_TASK.md | Set AQ-009 as the single current documentation task; preserve earlier tasks as history. |
+| DECISIONS.md | Record AQ-008 review and Jon's AQ-009 foundation direction without reopening old approvals. |
+| APPROVAL_QUEUE.md | Record approved drafting and Jon's publication YES separately from pending foundation review and unapproved implementation. |
+| CODEX_REPORT.md | Record this cycle's work, checks, exclusions, limitations and stop state. |
+| README.md | Add current status and navigation to the new authoritative documents. |
+
+AI_SUPERVISOR.md is unchanged. All prior bytes of the five existing edited
+documents are retained below their explicit historical boundary.
+
+## AQ-008 reconciliation and limitations
+
+AQ-008 is **COMPLETED / SUPERVISOR-REVIEWED** per Jon's supplied record. A later
+approved tester rotation preceded one independent outside phone-agent cache-only
+`search_procurement_intelligence` call. Result: STALE, five DISCOVERED leads,
+compatibility/freshness unknown; `external_discovery_requests_attempted=0`,
+`external_discovery_invoked=false`. Reported Neon evidence: one tester row,
+one search call, zero other tool calls, zero measured external discovery, zero
+discovery-budget reservations and settlements.
+
+The individual usage row's **verification_fetches was NULL / not measured**.
+It is not independently measured zero. Scoped counts are not a reset of
+historical identities, rows, or holds.
+
+Feedback: response structure understandable; stale leads non-actionable and
+included clearly irrelevant sources. The identified weakness is discovery
+relevance/cache quality. No lead identity, URL, compatibility, score, reuse
+intention, timestamp, fresh provider reading, or current runtime-health evidence
+is invented. The completed phone agent is not assumed to be the previously
+prepared Claude Code client.
+
+## Architecture fidelity and clarifications
+
+All supplied principles and roadmap stages are retained. Target interfaces,
+future tool names, endpoints and illustrative capability JSON are explicitly
+not claims about current implementation. Three clarifications preserve existing
+invariants: historical retention remains subject to source policy; the
+transaction's outbound action is an atomic durable outbox record with supplier
+execution only after COMMIT; the unavailable-provider zero-request test means
+no request was attempted, while any attempted request remains counted even on
+failure. No automatic retry authority is introduced.
+
+## Validation
+
+Before edits, the required existing Python suite ran with credentials and
+database opt-ins absent and all networking denied:
+
+`env -i PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin PYTHONDONTWRITEBYTECODE=1 /usr/bin/sandbox-exec -p '(version 1)(allow default)(deny network*)' venv/bin/python -m pytest procurement/tests -p no:cacheprovider`
+
+Pre-change: **666 passed / 0 failed / 46 skipped**, 712 collected.
+The 46 skips are existing opt-in PostgreSQL tests. The first nested-sandbox
+launch was denied before tests began; the same command ran successfully outside
+the outer sandbox while retaining the explicit all-network-denied profile.
+
+Post-change: **666 passed / 0 failed / 46 skipped**, 712 collected, with the same
+credential-free, all-network-denied command. These are two separate runs, not
+additive totals; no new product tests were written.
+
+Pre-approval documentation checks passed: exactly eight Markdown files changed/added; all five
+historical suffixes byte-identical to the Git baseline; AI_SUPERVISOR.md and HEAD
+unchanged; nothing staged; all 28 relative links in the added/current sections
+resolve; all 13 roadmap stages and six permanent evidence invariants retained;
+JSON examples parse; exact cache-only request omits model_identifier; Markdown
+whitespace/fence checks and added-text secret-pattern scan pass.
+`git diff --check` passed. These checks validate documentation consistency, not
+runtime implementation of the architecture or a new measurement of AQ-008.
+
+No Node/MCP test calls, live integration tests, smoke-test.js or placeholder npm
+test were run. Earlier historical test totals are not relabeled as current.
+
+## Boundaries and publication state
+
+Only the eight listed Markdown documents in the isolated supervisor checkout
+are changed/added. No product code, runtime, schema/migration (including 006),
+dependency/Redis, auth/authz, provider, source policy, production
+container/deployment, credentials/rotation, transaction/payment/billing, or
+cache data was changed. No procurement MCP call, external discovery, provider
+activation, Neon query, or destination fetch occurred in this cycle. No secrets,
+authenticated URLs, private logs, or raw provider payloads are added.
+
+At the pre-approval stop, no commit, push, or issue comment had been made. Jon
+then replied **“yes”** to the prepared eight-file packet and proposed message in
+the active session; no durable message URL was supplied. That decision permits
+only this documentation publication, one sanitized handoff, and verification.
+Approved commit message:
+`docs: reconcile AQ-008 and establish AQ-009 resilience baseline`.
+
+Final commit identity, remote-file verification, and publication completion are
+to be recorded in the one approved handoff to permanent
+[Supervisor Queue Issue #1](https://github.com/lopezjon45-web/procurement-supervisor/issues/1).
+This document does not predeclare those measurements. Publication
+approval does not complete foundation review or authorize implementation.
+Stage 1 cache/relevance hardening is the first later implementation direction
+only after review and separately scoped authorization.
+
+state: APPROVAL_REQUIRED
+task: AQ-009
+next_action: Supervisor review of the published AQ-009 foundation before any implementation.
+
+---
+
+<!-- AQ009_HISTORICAL_RECORDS -->
+## Historical records — preserved verbatim
+
+Everything below is historical. Earlier headings, task IDs, stop states, and
+approval restrictions describe their original cycles; they are not additional
+current tasks or renewed execution authority. Only the current AQ-009 section
+above governs this cycle. Standing evidence rules and unmodified approval gates
+remain in force.
+
 # AQ-008 — Approved; BLOCKED at tester credential prerequisite
 
 Jon explicitly directed AQ-007 to be recorded as SUPERVISOR-REVIEWED and approved AQ-008 in the active instruction beginning “Jon explicitly approved AQ-008: one outside-agent consumption test.” This records his decisions without changing strategy or treating unverified leads as product evidence.

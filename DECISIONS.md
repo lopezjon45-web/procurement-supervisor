@@ -1,3 +1,92 @@
+# Current decisions — AQ-009 / 2026-09-28
+
+## Authority and decision source
+
+Jon remains the final YES / NO authority; ChatGPT remains strategic supervisor
+and plan keeper; Codex remains implementation executor. AI_SUPERVISOR.md and its
+permanent evidence rules are unchanged.
+
+Source: Jon's active instruction titled “Codex Execution Prompt — AQ-009
+Architecture Resilience Baseline” and the three documents supplied with it,
+recorded in [AQ-009_CONTROL_SYNC.md](AQ-009_CONTROL_SYNC.md). No durable
+session-message URL was supplied. This entry records Jon's explicit direction;
+it does not infer approval.
+
+## AQ-008 — COMPLETED / SUPERVISOR-REVIEWED
+
+The earlier credential-prerequisite blocker was subsequently resolved through a
+tester credential rotation under Jon's explicit approval, with owner identity
+and other configuration preserved. The completed test used independent outside
+phone-agent consumption: one cache-only `search_procurement_intelligence` call,
+STALE, five DISCOVERED leads, unknown compatibility/freshness. Reported Neon
+evidence confirms one tester row, one search call, zero other tool calls, zero
+measured external discovery, zero discovery-budget reservations and settlements.
+The individual usage row's `verification_fetches` is **NULL / not measured**,
+never independently measured zero.
+
+Outside-agent feedback: understandable response structure, but stale leads were
+not actionable and included clearly irrelevant sources. Discovery relevance and
+cache quality are the demonstrated gap. Completion/review does not verify leads
+or establish procurement usefulness. Detailed scope and evidence limitations are
+preserved in AQ-009_CONTROL_SYNC.md. No new rotation or test is authorized.
+
+## AQ-009 — documentation publication approved; foundation review pending
+
+AQ-009 is the single current task and advances Stage 0 of
+[ROADMAP.md](ROADMAP.md), the authoritative long-term navigation map. Jon approved
+establishing [ARCHITECTURE_RESILIENCE.md](ARCHITECTURE_RESILIENCE.md) in the control
+plane. Its rules preserve:
+
+- application/core plus PostgreSQL as the authoritative spine, with one authority per state;
+- dependency tiers and measured need before new external runtime services;
+- domain-facing ports with replaceable vendor adapters;
+- explicit capability degradation and liveness separate from readiness;
+- Redis as a disposable accelerator; PostgreSQL owns semantic cache state;
+- durable authorized transaction intent, idempotency and atomic outbox before provider execution;
+- one internal Principal abstraction and mandatory adapter failure-mode tests.
+
+The roadmap elaborates the earlier pilot sequence without reopening consumed
+approvals: preserve guardrails and pilot limits, address the evidence-backed
+cache/relevance gap after foundation review, and defer broad publication until
+value is proven. The laptop-hosted pilot remains the operating direction; cloud
+migration is not approved. Stage 2's `find_procurement_options` is a future
+target, not a current tool rename.
+
+Standing constraints remain: max_queries=1 in the active intelligence discovery
+path; no automatic retries; cache-first behavior; truthful
+external_discovery_requests_attempted; approximately 25-search provider reserve;
+owner=10 and tester-1=5 lifetime pilot caps; browser crawling OFF in production;
+no new SerpApi credential activation.
+
+## Exact approval gates
+
+Preparation of these documents is approved. Jon subsequently replied **“yes”**
+to the eight-file review packet and proposed commit message in the active
+session, satisfying the separate commit/push gate. No durable message URL is
+available. This YES authorizes only the reviewed documentation publication,
+one sanitized handoff in permanent Issue #1, and commit/file verification.
+Stop APPROVAL_REQUIRED for supervisor review afterward; review remains pending.
+
+No product/runtime/schema/dependency/auth/provider/source-policy changes,
+production deployment, procurement MCP test calls, credential rotation,
+transaction/payment/billing implementation, or cache deletion/invalidation are
+approved. Migration 006 may not be created or applied.
+
+After foundation review, Stage 1 cache/relevance hardening is the first
+implementation direction; review/publication does not itself authorize that
+implementation. Jon must approve its exact scope and any gated actions.
+
+---
+
+<!-- AQ009_HISTORICAL_RECORDS -->
+## Historical records — preserved verbatim
+
+Everything below is historical. Earlier headings, task IDs, stop states, and
+approval restrictions describe their original cycles; they are not additional
+current tasks or renewed execution authority. Only the current AQ-009 section
+above governs this cycle. Standing evidence rules and unmodified approval gates
+remain in force.
+
 # Current approved status — 2026-09-21
 
 AQ-004 is COMPLETED AND REVIEWED, as explicitly directed by Jon on 2026-09-21 in the active Codex session. Its single public test recorded one external search attempt and five discovered/unverified leads, all compatibility unknown. Account readings were 244 before and after; observed delta zero is not a billing/cache determination. Owner durable usage became 1/10; tester history was unchanged. Credentials were cleared, the temporary container removed, and production tunnel/health restored without changing the production container/image. Result: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5753722005 . This reviewed status does not establish candidate compatibility or broad procurement usefulness.
