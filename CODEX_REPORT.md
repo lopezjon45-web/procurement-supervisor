@@ -70,7 +70,7 @@ provider/account request, live procurement MCP call, credential/auth,
 SourcePolicy, destructive cache/data, or transaction/payment action occurred.
 No source URLs were fetched. Only local code/tests/docs and the approved
 supervisor controls/handoff changed. Historical supervisor records and
-AI_SUPERVISOR.md remain intact.
+AI_SUPERVISOR.md remain intact. The sanitized correction and final test evidence are in https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5882580787.
 
 state: APPROVAL_REQUIRED
 task: AQ-010 Slice 1A
