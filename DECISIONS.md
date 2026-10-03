@@ -1,3 +1,57 @@
+# Current decisions — cross-cutting future gates, 2026-10-03
+
+Jon explicitly approved this control-only record of two permanent directions.
+Decision source: Jon's active instruction requesting the exact four-file
+supervisor update; no durable session-message URL was supplied. This decision
+records requirements, not implementation approval.
+
+## Universal Agent Governance Harness
+
+Vendor-neutral governance is a permanent architectural and governance
+direction. Canonical truth must be recoverable from plain, versioned
+repository files and recorded supervisor state without hidden model memory.
+Any unknown or future agent must have a universal `START_HERE.md`-style
+bootstrap. `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, Cursor rules, and other
+vendor-specific files are non-authoritative adapters. Capability and
+authorization must be checked separately. Missing, stale, inconsistent, or
+unverifiable authority fails closed. Deterministic preflight/guard scripts
+should supplement prose. After every completed gate, reconcile supervisor
+history and verify the remote SHA, exact changed files, and remote contents
+before advancing. Harness installation requires a separately reviewed
+merge/collision plan and explicit Jon approval.
+
+## Secure Agent Handshake
+
+Secure Agent Handshake is required before broad public agent access. Future
+design must provide TLS transport, asymmetric key-possession proof or an
+equivalently strong standard proof-of-possession mechanism, a server-generated
+short-lived nonce/challenge, single-use replay protection, protocol/security-
+version binding, downgrade resistance, short-lived sessions, sender-bound or
+proof-of-possession sessions where practical, revocation, key rotation, safe
+handshake audit records, and strict separation of authentication and
+authorization. The permanent invariant is:
+
+**AUTHENTICATED != AUTHORIZED**
+
+The external handshake must never expose or transmit long-lived private keys,
+master credentials, database credentials, provider/API credentials, internal
+refresh-fencing capabilities, or internal owner capability/token material.
+Authentication adapters may vary by agent ecosystem, but every successful
+method must resolve to the same internal Principal / authorization boundary.
+Static bearer authentication may remain bounded for the pilot; it is not the
+intended broad-public trust model. Handshake design and implementation require
+separate approval. No handshake code or auth change is approved here.
+
+AQ-010 remains the sole active Stage 1 task. Slice 1A remains COMPLETED /
+SUPERVISOR-REVIEWED; corrected Python validation is 682 passed / 0 failed /
+46 skipped and full safe Node validation is 57 passed / 0 failed / 0 skipped.
+Real PostgreSQL integration/concurrency is unvalidated. Slice 1B and migration
+006 remain NOT APPROVED, with existing design/review boundaries unchanged.
+
+---
+
+## Historical decisions — preserved verbatim
+
 # Current decisions — AQ-010 / Stage 1
 
 Jon remains the final YES / NO authority. AQ-010 remains the sole current

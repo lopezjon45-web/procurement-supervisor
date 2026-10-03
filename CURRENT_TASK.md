@@ -1,3 +1,48 @@
+# Current task — AQ-010 / Stage 1
+
+**AQ-010 remains the sole active task.** Slice 1A remains COMPLETED /
+SUPERVISOR-REVIEWED, including the empty-success admission correction.
+Corrected Python validation remains 682 passed / 0 failed / 46 skipped; full
+safe Node validation remains 57 passed / 0 failed / 0 skipped. Real PostgreSQL
+integration and concurrency remain unvalidated.
+
+Slice 1B is NOT approved for implementation. Migration 006 is NOT approved for
+creation or application. Existing Slice 1B design and supervisor-review
+boundaries are unchanged; no new active task is opened.
+
+## Recorded future requirements only
+
+The **Universal Agent Governance Harness** direction requires vendor-neutral,
+plain/versioned and recorded supervisor truth, a universal `START_HERE.md`-style
+bootstrap, non-authoritative vendor adapters, separate capability and
+authorization checks, fail-closed authority checks, deterministic guards, and
+history-preserving remote reconciliation after each completed gate. Harness
+installation requires its own reviewed merge/collision plan and Jon approval.
+
+The **Secure Agent Handshake** requirement is a mandatory gate before broad
+public agent access. Its future design must cover TLS, proof of possession,
+short-lived server challenges with replay protection, version binding and
+downgrade resistance, short-lived and sender-bound sessions where practical,
+revocation, key rotation, safe audit records, and one internal Principal /
+authorization boundary across authentication adapters. Its permanent rule is
+**AUTHENTICATED != AUTHORIZED**. External handshakes must never transmit
+long-lived private keys, master/database/provider credentials, internal
+refresh-fencing capabilities, or internal owner capability/token material.
+Static bearer remains at most a bounded pilot mechanism. Handshake design and
+implementation remain separately approval-gated.
+
+This control-only record authorizes no harness installation, handshake code,
+product/runtime change, auth or credential change, dependency, provider call,
+PostgreSQL action, migration, deployment, or SourcePolicy change.
+
+state: APPROVAL_REQUIRED
+task: AQ-010
+next_action: Slice 1B / migration 006 design and supervisor review only; obtain separate approval before implementation or either future gate.
+
+---
+
+## Historical task records — preserved verbatim
+
 # AQ-010 — Slice 1A completed / supervisor-reviewed
 
 AQ-010 remains the sole current Roadmap Stage 1 task. Jon remains the final

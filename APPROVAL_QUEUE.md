@@ -1,3 +1,56 @@
+# Current approval queue — AQ-010 and future gates
+
+Jon remains the final YES / NO authority. AQ-010 remains the sole active
+Roadmap Stage 1 task. Slice 1A is COMPLETED / SUPERVISOR-REVIEWED. Corrected
+Python validation remains 682 passed / 0 failed / 46 skipped; full safe Node
+validation remains 57 passed / 0 failed / 0 skipped. Real PostgreSQL
+integration/concurrency remains unvalidated. Slice 1B implementation and
+migration 006 creation/application remain **NOT APPROVED**; existing design and
+supervisor-review boundaries are unchanged.
+
+## Universal Agent Governance Harness
+
+- Vendor-neutral governance direction: **APPROVED by Jon** for recording as a
+  future requirement. Canonical truth belongs in plain, versioned repository
+  files and recorded supervisor state, with a universal `START_HERE.md`-style
+  bootstrap and no required hidden model memory. Vendor-specific files are
+  adapters, not authority. Separate capability from authorization; fail closed
+  on missing, stale, inconsistent, or unverifiable authority; supplement prose
+  with deterministic preflight/guard scripts. After completed gates, reconcile
+  history and verify remote SHA, changed files, and contents before advancing.
+- Harness installation: **APPROVAL_REQUIRED**. A separately reviewed
+  merge/collision plan and explicit Jon approval are required. No skills,
+  adapters, product/runtime code, auth, credentials, dependencies, or deployment
+  are authorized by the approved direction.
+
+## Secure Agent Handshake
+
+- Requirement before broad public agent access: **APPROVED by Jon** as future
+  direction. Design must include TLS, asymmetric or equivalently strong
+  standard proof of possession, a server-generated short-lived nonce/challenge,
+  single-use replay protection, protocol/security-version binding, downgrade
+  resistance, short-lived sessions and sender-bound/proof-of-possession sessions
+  where practical, revocation, key rotation, safe audit records, and strict
+  authentication/authorization separation. Authentication adapters must all
+  resolve to one internal Principal / authorization boundary. Static bearer
+  authentication may remain a bounded pilot mechanism, not the broad-public
+  trust model.
+- Permanent invariant: **AUTHENTICATED != AUTHORIZED**.
+- External handshake exclusion: never expose or transmit long-lived private
+  keys, master credentials, database credentials, provider/API credentials,
+  internal refresh-fencing capabilities, or internal owner capability/token
+  material.
+- Handshake design, implementation, authentication, key, and deployment changes:
+  **APPROVAL_REQUIRED**. No handshake code is authorized by this record.
+
+Decision source: Jon's active instruction explicitly approving this exact
+control-plane update; no durable session-message URL was supplied. No AQ-011
+or other active task is created.
+
+---
+
+## Historical approval records — preserved verbatim
+
 # Current approval queue — AQ-010
 
 Jon remains the final YES / NO authority. AQ-010 Slice 1A is COMPLETED /

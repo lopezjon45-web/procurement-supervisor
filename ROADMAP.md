@@ -1,3 +1,66 @@
+# Current cross-cutting requirements — 2026-10-03
+
+Jon approved the following directions for the control plane. They are required
+future gates, not authorization to implement them or to advance the active task.
+
+## Universal Agent Governance Harness
+
+Canonical project governance must be vendor-neutral. Project truth must be
+recoverable from plain, versioned repository files and recorded supervisor
+state, with no hidden model memory required. Any unknown or future agent must
+be able to begin from a universal `START_HERE.md`-style bootstrap. Vendor-specific
+files such as `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and Cursor rules are adapters
+only; they are not authoritative.
+
+Capability and authorization are separate checks. Missing, stale,
+inconsistent, or unverifiable authority fails closed. Deterministic preflight
+and guard scripts should supplement prose instructions. After every completed
+gate, reconcile the supervisor repository without rewriting history, then
+verify the remote commit SHA, exact changed files, and remote file contents
+before advancing.
+
+Installing this harness remains **APPROVAL_REQUIRED**. It requires its own
+reviewed merge/collision plan and explicit Jon approval. This direction does
+not authorize product-repository changes, skills or adapters, runtime code,
+authentication, credentials, dependencies, or deployment.
+
+## Secure Agent Handshake
+
+Secure Agent Handshake is a mandatory security gate before broad public agent
+access. Its future design must use TLS-protected transport; asymmetric proof
+of key possession or an equivalently strong standard proof-of-possession
+mechanism; a server-generated nonce/challenge with short expiration and
+single-use replay protection; protocol/security-version binding and downgrade
+resistance; short-lived sessions, sender-bound/proof-of-possession sessions
+where practical, revocation and key rotation; and safe handshake audit records.
+Authentication and authorization remain strictly separate:
+
+**AUTHENTICATED != AUTHORIZED**
+
+The external handshake must never expose or transmit long-lived private keys,
+master credentials, database credentials, provider/API credentials, internal
+refresh-fencing capabilities, or internal owner capability/token material.
+Different agent ecosystems may use different authentication adapters, but
+every successful method must resolve to the same internal Principal and
+authorization boundary. Static bearer authentication may remain a bounded
+pilot mechanism; it is not the intended long-term broad-public trust model.
+Handshake design and implementation, including auth, key, and deployment
+changes, remain separately **APPROVAL_REQUIRED**. No handshake code is
+authorized by this entry.
+
+## Active roadmap boundary
+
+AQ-010 remains the sole active Roadmap Stage 1 task. Slice 1A is COMPLETED /
+SUPERVISOR-REVIEWED. Corrected Python validation remains 682 passed / 0 failed /
+46 skipped; full safe Node validation remains 57 passed / 0 failed / 0 skipped.
+Real PostgreSQL integration/concurrency remains unvalidated. Slice 1B
+implementation and migration 006 creation/application remain NOT APPROVED;
+their existing design/review boundaries are unchanged.
+
+---
+
+## Historical roadmap — preserved verbatim
+
 # Procurement Intelligence Roadmap
 
 ## Document status and authority
