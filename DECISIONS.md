@@ -1,244 +1,118 @@
-# Current decisions — cross-cutting future gates, 2026-10-03
+# Decisions
 
-Jon explicitly approved this control-only record of two permanent directions.
-Decision source: Jon's active instruction requesting the exact four-file
-supervisor update; no durable session-message URL was supplied. This decision
-records requirements, not implementation approval.
-
-## Universal Agent Governance Harness
-
-Vendor-neutral governance is a permanent architectural and governance
-direction. Canonical truth must be recoverable from plain, versioned
-repository files and recorded supervisor state without hidden model memory.
-Any unknown or future agent must have a universal `START_HERE.md`-style
-bootstrap. `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, Cursor rules, and other
-vendor-specific files are non-authoritative adapters. Capability and
-authorization must be checked separately. Missing, stale, inconsistent, or
-unverifiable authority fails closed. Deterministic preflight/guard scripts
-should supplement prose. After every completed gate, reconcile supervisor
-history and verify the remote SHA, exact changed files, and remote contents
-before advancing. Harness installation requires a separately reviewed
-merge/collision plan and explicit Jon approval.
-
-## Secure Agent Handshake
-
-Secure Agent Handshake is required before broad public agent access. Future
-design must provide TLS transport, asymmetric key-possession proof or an
-equivalently strong standard proof-of-possession mechanism, a server-generated
-short-lived nonce/challenge, single-use replay protection, protocol/security-
-version binding, downgrade resistance, short-lived sessions, sender-bound or
-proof-of-possession sessions where practical, revocation, key rotation, safe
-handshake audit records, and strict separation of authentication and
-authorization. The permanent invariant is:
-
-**AUTHENTICATED != AUTHORIZED**
-
-The external handshake must never expose or transmit long-lived private keys,
-master credentials, database credentials, provider/API credentials, internal
-refresh-fencing capabilities, or internal owner capability/token material.
-Authentication adapters may vary by agent ecosystem, but every successful
-method must resolve to the same internal Principal / authorization boundary.
-Static bearer authentication may remain bounded for the pilot; it is not the
-intended broad-public trust model. Handshake design and implementation require
-separate approval. No handshake code or auth change is approved here.
-
-AQ-010 remains the sole active Stage 1 task. Slice 1A remains COMPLETED /
-SUPERVISOR-REVIEWED; corrected Python validation is 682 passed / 0 failed /
-46 skipped and full safe Node validation is 57 passed / 0 failed / 0 skipped.
-Real PostgreSQL integration/concurrency is unvalidated. Slice 1B and migration
-006 remain NOT APPROVED, with existing design/review boundaries unchanged.
-
----
-
-## Historical decisions — preserved verbatim
-
-# Current decisions — AQ-010 / Stage 1
-
-Jon remains the final YES / NO authority. AQ-010 remains the sole current
-Roadmap Stage 1 task. Slice 1A is COMPLETED / SUPERVISOR-REVIEWED, with the
-empty-success admission correction included in the accepted implementation.
-Corrected Python validation: 682 passed / 0 failed / 46 skipped. Full safe Node
-validation: 57 passed / 0 failed / 0 skipped. Real PostgreSQL integration and
-concurrency behavior remain unvalidated.
-
-Slice 1B and migration 006 remain NOT APPROVED. Design and supervisor review
-are the only next activity; this decision authorizes no migration or Slice 1B
-implementation.
-
----
-
-## Earlier AQ-010 decisions — historical
-
-# Current decisions — AQ-010 / Stage 1
-
-Jon's active instruction beginning “YES — I approve AQ-010 Slice 1A
-implementation and tests” accepts and closes AQ-009 Stage 0. AQ-010 is the sole
-current Roadmap Stage 1 task. Slice 1A implementation, tests, documentation,
-control reconciliation, and the sanitized supervisor handoff are approved within
-the exact bounds in CURRENT_TASK.md and APPROVAL_QUEUE.md. No durable
-session-message URL was supplied. Jon remains the final YES / NO authority.
-
-Cache admission is a lead-selection heuristic, never source permission or a
-verified product, seller, price, stock, identity, or compatibility claim.
-Preserve original URLs/timestamps, SourcePolicy limits, unknowns, budget guardrails,
-one-query/20-row/five-lead bounds, and no automatic retry. Slice 1B and migration
-006 require separate review/approval. Earlier AQ-009 directions below are
-historical after Jon's acceptance; permanent evidence rules remain active.
-
----
-
-# Current decisions — AQ-009 / 2026-09-28
-
-## Authority and decision source
-
-Jon remains the final YES / NO authority; ChatGPT remains strategic supervisor
-and plan keeper; Codex remains implementation executor. AI_SUPERVISOR.md and its
-permanent evidence rules are unchanged.
-
-Source: Jon's active instruction titled “Codex Execution Prompt — AQ-009
-Architecture Resilience Baseline” and the three documents supplied with it,
-recorded in [AQ-009_CONTROL_SYNC.md](AQ-009_CONTROL_SYNC.md). No durable
-session-message URL was supplied. This entry records Jon's explicit direction;
-it does not infer approval.
-
-## AQ-008 — COMPLETED / SUPERVISOR-REVIEWED
-
-The earlier credential-prerequisite blocker was subsequently resolved through a
-tester credential rotation under Jon's explicit approval, with owner identity
-and other configuration preserved. The completed test used independent outside
-phone-agent consumption: one cache-only `search_procurement_intelligence` call,
-STALE, five DISCOVERED leads, unknown compatibility/freshness. Reported Neon
-evidence confirms one tester row, one search call, zero other tool calls, zero
-measured external discovery, zero discovery-budget reservations and settlements.
-The individual usage row's `verification_fetches` is **NULL / not measured**,
-never independently measured zero.
-
-Outside-agent feedback: understandable response structure, but stale leads were
-not actionable and included clearly irrelevant sources. Discovery relevance and
-cache quality are the demonstrated gap. Completion/review does not verify leads
-or establish procurement usefulness. Detailed scope and evidence limitations are
-preserved in AQ-009_CONTROL_SYNC.md. No new rotation or test is authorized.
-
-## AQ-009 — documentation publication approved; foundation review pending
-
-AQ-009 is the single current task and advances Stage 0 of
-[ROADMAP.md](ROADMAP.md), the authoritative long-term navigation map. Jon approved
-establishing [ARCHITECTURE_RESILIENCE.md](ARCHITECTURE_RESILIENCE.md) in the control
-plane. Its rules preserve:
-
-- application/core plus PostgreSQL as the authoritative spine, with one authority per state;
-- dependency tiers and measured need before new external runtime services;
-- domain-facing ports with replaceable vendor adapters;
-- explicit capability degradation and liveness separate from readiness;
-- Redis as a disposable accelerator; PostgreSQL owns semantic cache state;
-- durable authorized transaction intent, idempotency and atomic outbox before provider execution;
-- one internal Principal abstraction and mandatory adapter failure-mode tests.
-
-The roadmap elaborates the earlier pilot sequence without reopening consumed
-approvals: preserve guardrails and pilot limits, address the evidence-backed
-cache/relevance gap after foundation review, and defer broad publication until
-value is proven. The laptop-hosted pilot remains the operating direction; cloud
-migration is not approved. Stage 2's `find_procurement_options` is a future
-target, not a current tool rename.
-
-Standing constraints remain: max_queries=1 in the active intelligence discovery
-path; no automatic retries; cache-first behavior; truthful
-external_discovery_requests_attempted; approximately 25-search provider reserve;
-owner=10 and tester-1=5 lifetime pilot caps; browser crawling OFF in production;
-no new SerpApi credential activation.
-
-## Exact approval gates
-
-Preparation of these documents is approved. Jon subsequently replied **“yes”**
-to the eight-file review packet and proposed commit message in the active
-session, satisfying the separate commit/push gate. No durable message URL is
-available. This YES authorizes only the reviewed documentation publication,
-one sanitized handoff in permanent Issue #1, and commit/file verification.
-Stop APPROVAL_REQUIRED for supervisor review afterward; review remains pending.
-
-No product/runtime/schema/dependency/auth/provider/source-policy changes,
-production deployment, procurement MCP test calls, credential rotation,
-transaction/payment/billing implementation, or cache deletion/invalidation are
-approved. Migration 006 may not be created or applied.
-
-After foundation review, Stage 1 cache/relevance hardening is the first
-implementation direction; review/publication does not itself authorize that
-implementation. Jon must approve its exact scope and any gated actions.
-
----
-
-<!-- AQ009_HISTORICAL_RECORDS -->
-## Historical records — preserved verbatim
-
-Everything below is historical. Earlier headings, task IDs, stop states, and
-approval restrictions describe their original cycles; they are not additional
-current tasks or renewed execution authority. Only the current AQ-009 section
-above governs this cycle. Standing evidence rules and unmodified approval gates
-remain in force.
-
-# Current approved status — 2026-09-21
-
-AQ-004 is COMPLETED AND REVIEWED, as explicitly directed by Jon on 2026-09-21 in the active Codex session. Its single public test recorded one external search attempt and five discovered/unverified leads, all compatibility unknown. Account readings were 244 before and after; observed delta zero is not a billing/cache determination. Owner durable usage became 1/10; tester history was unchanged. Credentials were cleared, the temporary container removed, and production tunnel/health restored without changing the production container/image. Result: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5753722005 . This reviewed status does not establish candidate compatibility or broad procurement usefulness.
-
-AQ-005 is EXPLICITLY APPROVED BY JON ON 2026-09-21. Decision source: Jon's instruction beginning “AQ-005 is explicitly approved by Jon on 2026-09-21” in the active Codex session. This records Jon's decision, not an approval inferred by Codex. This documentation-only sync precedes AQ-005 execution.
-
-The AQ-004 not-approved and runtime-credential restrictions in the historical status below are superseded only within the explicit AQ-005 temporary-runtime scope in CURRENT_TASK.md and APPROVAL_QUEUE.md. Locked truth rules, operating direction, lifetime caps, and approval gates remain in force. No broader discovery, production change, verification, cloud, or registry authorization is implied.
-
----
-
-# Locked Decisions
-
-## Roles
-
-Jon = final YES / NO approval authority.
-ChatGPT = strategic supervisor and plan keeper.
-Codex = implementation executor.
+Binding decisions and standing constraints in force now. Superseded decisions
+are not repeated here; see [history/README.md](history/README.md) and Git
+history. Governance and roles are in [AI_SUPERVISOR.md](AI_SUPERVISOR.md).
 
 ## Product and operating direction
 
-Build universal procurement intelligence with explicit evidence and unknowns. Discovery leads are not verified product facts. Compatibility needs evidence. The laptop-hosted pilot remains the operating direction; cloud migration and broad publication require approval and demonstrated value.
+- Build universal procurement intelligence for AI agents with explicit
+  evidence, provenance, and unknowns. Discovery leads are not verified product
+  facts; compatibility needs evidence.
+- [ROADMAP.md](ROADMAP.md) is the authoritative long-term navigation map.
+  Every task names the roadmap stage it advances.
+- [ARCHITECTURE_RESILIENCE.md](ARCHITECTURE_RESILIENCE.md) is the accepted
+  Stage 0 foundation. AQ-009 Stage 0 is accepted and closed.
+- AQ-010 (Stage 1, Cache/Relevance Integrity) is the sole active task.
+- The laptop-hosted pilot remains the operating direction. Cloud migration and
+  broad publication require explicit approval and demonstrated value.
 
-## Locked sequence
+## Evidence invariants
 
-1. SerpApi free-tier quota guardrails — completed and reviewed.
-2. Enable one-search default discovery — existing behavior preserved.
-3. Verify real candidate quality — AQ-001's one approved live test completed; broad usefulness is not yet proven.
-4. Add per-client discovery quotas — implemented and reviewed under AQ-002.
-5. Measure usage and free-tier consumption — AQ-003 measured provider-free runtime behavior; no new provider search was authorized.
-6. Improve only gaps shown by tester evidence.
-7. Publish broadly only after value is proven.
+- DISCOVERED != VERIFIED.
+- SEARCH SNIPPET != PRODUCT FACT.
+- STALE != CURRENT.
+- MODEL MENTION != COMPATIBLE.
+- UNKNOWN != NO.
+- UNKNOWN != ZERO.
+- AUTHENTICATED != AUTHORIZED.
+- External providers supply input or transport; they never own procurement
+  truth.
 
-## Current constraints
+## Standing constraints
 
-- Preserve `max_queries=1` in the active intelligence discovery path.
-- Preserve no automatic retries, cache-first behavior, and truthful `external_discovery_requests_attempted` accounting.
-- Retain the approximately 25-search provider reserve.
-- Keep SerpApi credentials absent from the laptop runtime until a new approval.
-- Keep browser crawling OFF in production.
-- Owner=10 and tester-1=5 are lifetime pilot caps, not periodic resets.
-- No schema/migration, dependency, auth/authz, source-policy, production, registry, billing, or cloud changes without a new explicit approval.
-- AQ-004 is not approved.
+Authority:
 
-## Approval state
+- One active task at a time.
+- Approval of one gate never transfers to another gate or task.
+- Capability does not imply authorization, and holding a credential does not
+  authorize using a provider.
+- No schema/migration, dependency, auth/authz, SourcePolicy, production,
+  registry, billing, cloud, destructive, real-provider, or live-database action
+  without the gate in AI_SUPERVISOR.md.
 
-AQ-001's single live-search authorization was consumed. AQ-002 implementation and tests were completed. AQ-003 deployment and provider-free Neon-backed validation were completed within scope and await supervisor review. No approval is inferred for the next roadmap step.
+Discovery and quota:
 
-## Work-cycle outcome
+- `max_queries=1` in the active provider discovery path.
+- No automatic provider retry.
+- Cache-first behavior. A cache read never silently triggers external
+  discovery.
+- Truthful `external_discovery_requests_attempted` accounting: every attempted
+  request is counted, even on failure.
+- Keep an approximately 25-search provider reserve. Unknown or unsafe provider
+  allowance fails closed.
+- Lifetime pilot caps, as last recorded: owner = 10, tester = 5. They are
+  lifetime caps, not periodic resets, and unresolved holds do not expire
+  automatically. The cap applied to the tester identity issued in the AQ-008
+  rotation is not independently confirmed (see APPROVAL_QUEUE.md).
+- Provider credential activation or use requires explicit approval.
+  Credentials never enter source code, this repository, Issue #1, or logs. The
+  secret-delivery mechanism is separately designed and approval-gated.
 
-Each cycle must end in exactly one of CONTINUE, APPROVAL_REQUIRED, or BLOCKED, with the meaning defined in AI_SUPERVISOR.md.
+Runtime and data:
 
+- Browser crawling OFF in production.
+- Preserve exact source URLs, original timestamps, and SourcePolicy limits.
+- Preserve historical evidence where policy permits. Destructive cache
+  clearing is not the normal upgrade path.
 
-## AQ-007 — explicit approval and completed bounded execution, 2026-09-22
+## Cross-cutting future gates
 
-Decision source: Jon's active instruction beginning “Jon explicitly approved AQ-007: one controlled live relevance regression.” No session-message URL is available. Scope: existing AQ-006 patch including anchored-prefix correction; one owner-authenticated public replacement-charger request with MacBook Air/A2681, omitted model identifier, discovered minimum and both refresh flags true; at most one search; cache-first, max_queries=1, no retries or destination fetch/verification; hidden session credentials, temporary hardened image/container and exclusive tunnel, then cleanup and production restore. This records the explicit approval without changing strategic decisions.
+Both are approved as permanent direction. Neither is approved for
+installation or implementation.
 
-The single authorized call completed with one measured search attempt and five unverified leads; owner usage 2 → 3, tester unchanged, reserve preserved, production restored. AQ-007 is execution-complete and APPROVAL_REQUIRED for review. The prior AQ-006 live-review request was authorized only through AQ-007; earlier AQ-007 credential-blocked/preparation status is historical. No ongoing search or production rollout authorization exists. Packet: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5788153252
+### Universal Agent Governance Harness
 
+Governance is vendor-neutral. Canonical truth lives in plain, versioned files
+and recorded supervisor state, with no hidden model memory required. Every
+agent bootstraps from [START_HERE.md](START_HERE.md). Vendor-specific files
+(`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, Cursor rules) are adapters, never
+authority. Capability and authorization are checked separately; missing,
+stale, inconsistent, or unverifiable authority fails closed. Deterministic
+preflight and guard scripts should supplement prose. After every completed
+gate, reconcile without rewriting history and verify the remote SHA, changed
+files, and contents before advancing.
 
-## AQ-007 supervisor-reviewed; AQ-008 approved and credential-blocked
+Installing the harness (adapters, guard scripts, vendor files) needs its own
+reviewed merge/collision plan and Jon's approval. START_HERE.md as a
+documentation file is not harness installation.
 
-Decision source: Jon's active instruction beginning “Jon explicitly approved AQ-008: one outside-agent consumption test,” including “Record AQ-007 as supervisor-reviewed and AQ-008 as approved.” No durable session-message URL is available. AQ-007 is SUPERVISOR-REVIEWED; that review does not verify its leads.
+### Secure Agent Handshake
 
-AQ-008 authorizes one existing outside tester-1 agent/client to consume the reviewed AQ-007 image's cache-only response for replacement charger, device MacBook Air, model A2681, omitted model identifier, minimum_evidence discovered, both refresh flags false. Preserve hidden tester credential entry, unchanged registry/database/auth/hardening, browser OFF, SerpApi absent, temporary exclusive routing and cleanup. No owner fallback, provider/destination requests, refresh, additional procurement calls or invented feedback. Publication/reconciliation is authorized; strategy and all remaining gates are unchanged.
+Required before broad public agent access, regardless of roadmap stage. The
+design must provide:
 
-Execution stopped because hidden tester-1 entry did not match the unchanged registry. No call, feedback, new usage, temporary runtime, or routing swap occurred; production health and unchanged budgets were verified. Status BLOCKED. Matching existing tester-1 secure entry is the unresolved prerequisite; no rotation or expanded scope is approved. Packet: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5788351714
+- TLS transport;
+- asymmetric proof of key possession, or an equivalently strong standard
+  proof-of-possession mechanism;
+- a server-generated, short-lived, single-use nonce/challenge with replay
+  protection;
+- protocol/security-version binding and downgrade resistance;
+- short-lived sessions, sender-bound or proof-of-possession where practical;
+- revocation and key rotation;
+- safe handshake audit records;
+- strict separation of authentication and authorization.
+
+The handshake never exposes or transmits long-lived private keys; master,
+database, or provider credentials; internal refresh-fencing capabilities; or
+internal owner capability/token material. Every authentication adapter
+resolves to the same internal Principal / authorization boundary. Static
+bearer authentication may remain a bounded pilot mechanism only. Design and
+implementation need separate approval.
+
+## Provenance
+
+These decisions were recorded from Jon's instructions in agent sessions. Most
+have no direct durable Jon source; their provenance is "historical approval
+reported; direct durable source unavailable". A Jon ratification comment on
+Issue #1 is the proposed direct source.

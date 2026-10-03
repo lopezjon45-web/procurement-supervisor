@@ -1,623 +1,95 @@
-# Codex Report — AQ-010 Slice 1A supervisor reconciliation
-
-AQ-010 Slice 1A is COMPLETED / SUPERVISOR-REVIEWED. The accepted implementation
-includes the empty-success admission correction, so a successful but empty or
-all-rejected first discovery does not create an accepted request-cache head.
-Corrected Python validation: 682 passed / 0 failed / 46 skipped. Full safe Node
-validation: 57 passed / 0 failed / 0 skipped. Real PostgreSQL integration and
-concurrency behavior remain unvalidated.
-
-Slice 1B and migration 006 remain NOT APPROVED. The next activity is design and
-supervisor review only. Jon remains the final YES / NO authority.
-
----
-
-## Earlier AQ-010 implementation report — historical
-
-# Codex Report — AQ-010 Slice 1A Cache/Relevance Integrity
-
-**Outcome: APPROVAL_REQUIRED.** AQ-009 Stage 0 is accepted/closed by Jon's
-active instruction beginning “YES — I approve AQ-010 Slice 1A implementation
-and tests.” AQ-010 is the sole current Roadmap Stage 1 task. Slice 1A was
-implemented locally within that approval and is pending supervisor/Jon review.
-No durable session-message URL was supplied.
-
-## Implemented local contract
-
-- Shared deterministic lead screening admits topical readable paths and named
-  search terms on recognized search routes, including the synthetic AQ-007
-  retail URL shapes. It rejects the known AQ-005 video/discussion and visibly
-  off-topic patterns. Opaque/informational shapes remain indeterminate. This is
-  selection only; it verifies no product or seller fact.
-- Request-cache identity is version 3 with explicit planner and relevance
-  versions. Old runs and heads remain stored but cannot serve as version-3
-  last-known-good. Cache admission precedes head promotion. Rejected leads are
-  absent from current intelligence records and revisions; quarantine metadata
-  retains only aggregate typed counts and safe reason codes.
-- Active cache content is fresh for 24 hours, stale_servable for at most 24
-  more hours, then hard_stale. Stricter stored/current SourcePolicy limits take
-  precedence. Failed or quarantined refreshes retain same-version permitted
-  stale evidence without relabeling original timestamps.
-- Additive MCP response fields are `content_state`, `content_reason_code`,
-  `screening_summary`, `provider_screening_summary`, `refresh_outcome`, and
-  `served_last_known_good`. Existing tool names, public inputs, and legacy
-  status/cache-status vocabularies remain. A failed refresh can return
-  `status=stale` with `discovery_status=error`, its safe error code, and truthful
-  measured attempts. A quarantined refresh without fallback returns `status=error`.
-
-## Changed local files
-
-Product: `procurement/core/relevance.py` (new), `procurement/core/planner.py`,
-`procurement/core/discovery.py`, `procurement/core/discovery_request_cache.py`,
-`procurement/discovery/serpapi.py`, `procurement/intelligence_cli.py`.
-
-Tests: `procurement/tests/test_discovery_request_cache.py`,
-`procurement/tests/test_intelligence_cli.py`,
-`procurement/tests/test_serpapi_relevance.py`,
-`procurement/tests/test_serpapi_discovery.py`,
-`procurement/tests/test_evidence_level.py`, `mcp-server/policy-test.js`, and
-`mcp-server/browseroff-test.js`.
-
-Documentation/controls: `docs/aq010-slice1a.md` (new), `CURRENT_TASK.md`,
-`APPROVAL_QUEUE.md`, `DECISIONS.md`, and `CODEX_REPORT.md`.
-
-## Validation and limits
-
-Pre-change safe baseline: Python **666 passed / 0 failed / 46 skipped**;
-Node **54 passed / 0 failed / 0 skipped**. Final focused affected Python:
-**257 passed / 0 failed / 11 skipped**. Final full Python:
-**677 passed / 0 failed / 46 skipped**. Final safe MCP/HTTP Node:
-**57 passed / 0 failed / 0 skipped**. Focused cases are included in the full
-Python suite; counts are separate runs, not additive. A post-handoff correction aligned the additive content-state values to `stale_servable` and `hard_stale`, closed the typed screening reason set, and added a synthetic opaque-catalog evidence regression; its pre-correction focused baseline was 255 passed / 0 failed / 11 skipped. Python tests ran with
-external networking denied and PostgreSQL opt-ins unset. Node tests denied
-external networking, allowed loopback only for the inspected HTTP test, and
-used database/provider doubles. No smoke-test.js or placeholder npm test ran.
-
-The opt-in PostgreSQL fixture creates and drops a temporary database, so it
-was not run under the approved no-persistent-mutation boundary. Real PostgreSQL
-SQL execution/concurrency and production behavior remain unvalidated. The
-lexical selector can still miss useful opaque/informational pages or admit
-keyword-stuffed leads; no result is verified or compatibility-checked.
-Repeated refresh after quarantine is possible until Slice 1B coordination and
-backoff are separately approved.
-
-No schema/DDL/migration 006, dependency, production/container/deployment,
-provider/account request, live procurement MCP call, credential/auth,
-SourcePolicy, destructive cache/data, or transaction/payment action occurred.
-No source URLs were fetched. Only local code/tests/docs and the approved
-supervisor controls/handoff changed. Historical supervisor records and
-AI_SUPERVISOR.md remain intact. The sanitized correction and final test evidence are in https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5882580787.
-
-state: APPROVAL_REQUIRED
-task: AQ-010 Slice 1A
-next_action: Supervisor/Jon review of Slice 1A implementation and evidence before Slice 1B or migration 006.
-
----
-
-## AQ-009 report — historical after Stage 0 acceptance
-
-# Codex Report — AQ-009 Architecture Resilience Baseline
-
-**Outcome: APPROVAL_REQUIRED.** Roadmap stage: **0**.
-Documentation prepared and publication explicitly approved by Jon's **“yes”**
-to the eight-file review packet. Foundation review remains pending.
-
-## Source, inspection, and governance comparison
-
-Read the six current GitHub control files and permanent Supervisor Queue Issue #1.
-Baseline: `0e933fc3c4f5936c17020f09b73e43d02d09c8b0`; latest issue packet was the
-historical AQ-008 credential blocker. Compared that state with Jon's active
-“Codex Execution Prompt — AQ-009 Architecture Resilience Baseline” and all three
-included documents. No material governance conflict was found: the contract
-gives precedence to Jon's latest explicit decision, and his current scope
-supersedes the stale blocker while retaining approval gates and evidence rules.
-
-The later AQ-008 completion is recorded from the supplied handoff, not remeasured
-by Codex. [AQ-009_CONTROL_SYNC.md](AQ-009_CONTROL_SYNC.md) preserves source
-attribution and the absence of a durable session-message or separate completion
-evidence URL.
-
-## Prepared changes
-
-| File | Change |
-| --- | --- |
-| ROADMAP.md | Add authoritative long-term navigation, all stages 0–12, invariants, dependency policy and current Stage 0 direction. |
-| ARCHITECTURE_RESILIENCE.md | Add the target authority/dependency model, adapters, explicit degradation, health semantics, disposable Redis, transaction outbox/idempotency, Principal abstraction and failure tests. |
-| AQ-009_CONTROL_SYNC.md | Add the supplied AQ-008 completion evidence, limitations, AQ-009 decision and exact publication/review gates. |
-| CURRENT_TASK.md | Set AQ-009 as the single current documentation task; preserve earlier tasks as history. |
-| DECISIONS.md | Record AQ-008 review and Jon's AQ-009 foundation direction without reopening old approvals. |
-| APPROVAL_QUEUE.md | Record approved drafting and Jon's publication YES separately from pending foundation review and unapproved implementation. |
-| CODEX_REPORT.md | Record this cycle's work, checks, exclusions, limitations and stop state. |
-| README.md | Add current status and navigation to the new authoritative documents. |
-
-AI_SUPERVISOR.md is unchanged. All prior bytes of the five existing edited
-documents are retained below their explicit historical boundary.
-
-## AQ-008 reconciliation and limitations
-
-AQ-008 is **COMPLETED / SUPERVISOR-REVIEWED** per Jon's supplied record. A later
-approved tester rotation preceded one independent outside phone-agent cache-only
-`search_procurement_intelligence` call. Result: STALE, five DISCOVERED leads,
-compatibility/freshness unknown; `external_discovery_requests_attempted=0`,
-`external_discovery_invoked=false`. Reported Neon evidence: one tester row,
-one search call, zero other tool calls, zero measured external discovery, zero
-discovery-budget reservations and settlements.
-
-The individual usage row's **verification_fetches was NULL / not measured**.
-It is not independently measured zero. Scoped counts are not a reset of
-historical identities, rows, or holds.
-
-Feedback: response structure understandable; stale leads non-actionable and
-included clearly irrelevant sources. The identified weakness is discovery
-relevance/cache quality. No lead identity, URL, compatibility, score, reuse
-intention, timestamp, fresh provider reading, or current runtime-health evidence
-is invented. The completed phone agent is not assumed to be the previously
-prepared Claude Code client.
-
-## Architecture fidelity and clarifications
-
-All supplied principles and roadmap stages are retained. Target interfaces,
-future tool names, endpoints and illustrative capability JSON are explicitly
-not claims about current implementation. Three clarifications preserve existing
-invariants: historical retention remains subject to source policy; the
-transaction's outbound action is an atomic durable outbox record with supplier
-execution only after COMMIT; the unavailable-provider zero-request test means
-no request was attempted, while any attempted request remains counted even on
-failure. No automatic retry authority is introduced.
+# Execution report — AQ-010
+
+The filename is legacy; any authorized executor maintains this file. It holds
+current AQ-010 evidence and open risks only. Earlier reports are in Git
+history and Issue #1; see [history/README.md](history/README.md).
+
+## Slice 1A — COMPLETED / SUPERVISOR-REVIEWED
+
+Accepted behavior (local product implementation):
+
+- One deterministic lead screen is shared by the provider adapter and the
+  request-cache admission gate, and runs before head promotion. Recognized
+  retail search routes may use named search terms. Synthetic AQ-005 / AQ-007
+  URL-shape regressions reject known off-topic and video/discussion shapes and
+  leave opaque or informational shapes indeterminate. Screening selects leads
+  only; it verifies no product, seller, price, stock, or compatibility fact.
+- Request-cache identity is version 3, with explicit planner and relevance
+  versions. Older runs and heads stay stored but cannot serve as version-3
+  last-known-good.
+- `content_state` values: `miss`, `fresh`, `stale_servable`, `hard_stale`,
+  `quarantined`. Fresh lasts 24 hours, stale_servable at most 24 more, then
+  hard_stale. Stricter stored or current SourcePolicy limits win.
+- A failed or quarantined refresh cannot replace a same-version admitted head.
+  Policy-permitted last-known-good is served explicitly as stale, with
+  original timestamps unchanged.
+- Empty-success correction: a successful but empty or all-rejected first
+  discovery does not create an accepted request-cache head.
+- Rejected candidates do not enter current intelligence records. Only typed
+  aggregate counts and safe reason codes persist.
+- Additive response fields: `content_state`, `content_reason_code`,
+  `screening_summary`, `provider_screening_summary`, `refresh_outcome`,
+  `served_last_known_good`. Tool names, public inputs, and legacy status /
+  cache-status values are unchanged.
+- Bounds unchanged: one query, 20 rows inspected, five leads, no automatic
+  retry.
+
+Contract document: `docs/aq010-slice1a.md` in the product workspace. On
+2026-10-03 it was confirmed present and consistent with the states, version-3
+identity, and 24 h + 24 h windows above.
+
+## Validation and provenance
+
+| Run | Python | Node (safe MCP/HTTP) | Source |
+| --- | --- | --- | --- |
+| Pre-change baseline | 666 / 0 / 46 | 54 / 0 / 0 | [5882441121](https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5882441121) |
+| Initial implementation | 675 / 0 / 46 | 57 / 0 / 0 | [5882441121](https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5882441121) |
+| After state-label correction | 677 / 0 / 46 | 57 / 0 / 0 | [5882580787](https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5882580787) |
+| **Accepted**, after empty-success correction | **682 / 0 / 46** | **57 / 0 / 0** | [5893841375](https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5893841375) |
+
+Counts are passed / failed / skipped from separate runs; they are not
+additive. The 46 skips are opt-in PostgreSQL tests. The opt-in PostgreSQL
+fixture creates and drops a database, so it was not run.
+
+The 675 and 677 runs denied all networking for Python and allowed loopback
+only for Node, with provider and database doubles. The accepted 682 record
+does not state the command, the network and database conditions, or the files
+changed by the empty-success correction. The product workspace is not under
+version control, so the accepted source state is not pinned to a commit.
+
+## Open limitations
+
+- Real PostgreSQL integration and concurrency are unvalidated.
+- Lexical screening can miss useful opaque or informational leads and can
+  admit keyword-stuffed ones.
+- Repeated refresh after quarantine can still occur, and spend quota, until
+  Slice 1B coordination and backoff exist.
+- Live relevance evidence is one repeated query. It must not be presented as
+  proof of broad quality.
+
+## Slice 1B — current state
+
+- Design and supervisor review only. Implementation, migration 006 creation,
+  and migration 006 application are not approved.
+- A corrected V2 design was reported as prepared, with two changes:
+  `pre_dispatch_zero` removed and provider-global cooldown ordering corrected.
+  No durable record of the design exists yet; these are reported, not
+  evidenced.
+- An exact read-only migration-history preflight was reported as prepared. It
+  has NOT been executed, its text is not published, and it is not approved.
+
+## Current cycle — control-plane integrity repair
+
+Documentation-only repair reviewed against remote `main`
+`34130a559784c5b8e0f1e5e62db57278997141e8`. Jon directly approved
+AQ010-CONTROL-INTEGRITY at
+https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5974634751.
+The reviewed repair and status reconciliation were published as one clean
+main commit. No product, runtime, database, provider, credential, auth,
+dependency, container, or routing action occurred. No SQL was executed.
 
-## Validation
-
-Before edits, the required existing Python suite ran with credentials and
-database opt-ins absent and all networking denied:
-
-`env -i PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin PYTHONDONTWRITEBYTECODE=1 /usr/bin/sandbox-exec -p '(version 1)(allow default)(deny network*)' venv/bin/python -m pytest procurement/tests -p no:cacheprovider`
-
-Pre-change: **666 passed / 0 failed / 46 skipped**, 712 collected.
-The 46 skips are existing opt-in PostgreSQL tests. The first nested-sandbox
-launch was denied before tests began; the same command ran successfully outside
-the outer sandbox while retaining the explicit all-network-denied profile.
-
-Post-change: **666 passed / 0 failed / 46 skipped**, 712 collected, with the same
-credential-free, all-network-denied command. These are two separate runs, not
-additive totals; no new product tests were written.
-
-Pre-approval documentation checks passed: exactly eight Markdown files changed/added; all five
-historical suffixes byte-identical to the Git baseline; AI_SUPERVISOR.md and HEAD
-unchanged; nothing staged; all 28 relative links in the added/current sections
-resolve; all 13 roadmap stages and six permanent evidence invariants retained;
-JSON examples parse; exact cache-only request omits model_identifier; Markdown
-whitespace/fence checks and added-text secret-pattern scan pass.
-`git diff --check` passed. These checks validate documentation consistency, not
-runtime implementation of the architecture or a new measurement of AQ-008.
-
-No Node/MCP test calls, live integration tests, smoke-test.js or placeholder npm
-test were run. Earlier historical test totals are not relabeled as current.
-
-## Boundaries and publication state
-
-Only the eight listed Markdown documents in the isolated supervisor checkout
-are changed/added. No product code, runtime, schema/migration (including 006),
-dependency/Redis, auth/authz, provider, source policy, production
-container/deployment, credentials/rotation, transaction/payment/billing, or
-cache data was changed. No procurement MCP call, external discovery, provider
-activation, Neon query, or destination fetch occurred in this cycle. No secrets,
-authenticated URLs, private logs, or raw provider payloads are added.
-
-At the pre-approval stop, no commit, push, or issue comment had been made. Jon
-then replied **“yes”** to the prepared eight-file packet and proposed message in
-the active session; no durable message URL was supplied. That decision permits
-only this documentation publication, one sanitized handoff, and verification.
-Approved commit message:
-`docs: reconcile AQ-008 and establish AQ-009 resilience baseline`.
-
-Final commit identity, remote-file verification, and publication completion are
-to be recorded in the one approved handoff to permanent
-[Supervisor Queue Issue #1](https://github.com/lopezjon45-web/procurement-supervisor/issues/1).
-This document does not predeclare those measurements. Publication
-approval does not complete foundation review or authorize implementation.
-Stage 1 cache/relevance hardening is the first later implementation direction
-only after review and separately scoped authorization.
-
-state: APPROVAL_REQUIRED
-task: AQ-009
-next_action: Supervisor review of the published AQ-009 foundation before any implementation.
-
----
-
-<!-- AQ009_HISTORICAL_RECORDS -->
-## Historical records — preserved verbatim
-
-Everything below is historical. Earlier headings, task IDs, stop states, and
-approval restrictions describe their original cycles; they are not additional
-current tasks or renewed execution authority. Only the current AQ-009 section
-above governs this cycle. Standing evidence rules and unmodified approval gates
-remain in force.
-
-# AQ-008 — Approved; BLOCKED at tester credential prerequisite
-
-Jon explicitly directed AQ-007 to be recorded as SUPERVISOR-REVIEWED and approved AQ-008 in the active instruction beginning “Jon explicitly approved AQ-008: one outside-agent consumption test.” This records his decisions without changing strategy or treating unverified leads as product evidence.
-
-A separate Claude Code 2.1.236 client was found with an authenticated existing login. The securely entered bearer did not match the existing tester-1 registry entry. Execution stopped before temporary-container creation, public-routing changes, Claude inference, or any procurement call. No owner fallback, key rotation or repeat entry was attempted. The session bearer was cleared.
-
-Cache status and lead count were not measured; no actual tester feedback exists. Calls, discovery attempts, provider account requests, destination fetches, crawling and verification were all zero. Owner remains consumed 3/held 0 (cap 10); tester-1 remains consumed 0/held 1 (cap 5). Ledger digests, tool counts and reservations/settlements were unchanged; no ordinary usage row was expected because no call occurred.
-
-The reviewed AQ-007 image digest sha256:3d42bc32ebba29acbef470a27e26cab91c7697b5f7b59ebb61ef9ed873358818 remains preserved. Production and original staging retain their AQ-008 entry IDs, images, start times and configuration; browser OFF and SerpApi absent. The temporary AQ-008 container is absent. Production ngrok never moved from localhost:3000; one tunnel/process and local/public health were independently verified. Pre-existing production request inspection remains enabled; no authenticated traffic was sent through it. The setup-only inspection check was corrected without runtime changes before the actual credential prerequisite failed.
-
-Safe validation: Python before/final each 666 passed / 0 failed / 46 skipped; MCP/HTTP 57 passed / 0 failed / 0 skipped with provider/database doubles and outbound network denial; four mocked one-call guard checks passed. No product code/schema/dependency/auth/policy/public-tool/rollout/Registry/cloud changes. These checks do not substitute for outside-agent consumption feedback.
-
-Sanitized packet: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5788351714
-
-state: BLOCKED
-task: AQ-008
-next_action: Resolve secure local entry for the existing tester-1 bearer, then resume only the approved one-call cache-only scope. No further activity this cycle.
-
-All prior task-status entries below are historical. AQ-007 is supervisor-reviewed; AQ-008 remains approved within its original scope, with execution blocked rather than permission expanded.
-
----
-
-# AQ-008 — Outside-Agent Consumption Test: Credential Prerequisite Blocked
-
-**Outcome: BLOCKED — the hidden bearer entry did not match the existing tester-1 registry entry. No procurement call or tester assessment occurred.**
-
-## Decision and scope
-
-Jon explicitly approved AQ-008 in the active instruction beginning “Jon explicitly approved AQ-008: one outside-agent consumption test,” and explicitly directed AQ-007 to be recorded as supervisor-reviewed. These decisions were recorded locally after reading the current supervisor files and latest Issue #1 comments. No durable session-message URL is available. [AQ-007](https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5788153252) is **SUPERVISOR-REVIEWED**; its leads remain unverified. AQ-008 is **APPROVED, EXECUTION BLOCKED** at the credential prerequisite; no broader authorization is implied.
-
-Approved request: query `replacement charger`; device `MacBook Air`; model `A2681`; model_identifier omitted; minimum_evidence `discovered`; refresh_if_missing=false; refresh_if_stale=false. Existing tester-1 only, temporary hardened runtime from the reviewed AQ-007 digest, no SerpApi key, one outside-agent call, no refresh, no other procurement-tool calls, and feedback based only on the returned response.
-
-## Outside tester and stopping point
-
-- Separate client found: **Claude Code 2.1.236**, with its existing `claude.ai` login reported authenticated. Initial sandboxed login status appeared unavailable; a read-only check outside the sandbox confirmed the existing login. No login, rotation, installation, or new service was performed.
-- This is a separate client, not Codex or a Codex subagent. Its inference request, MCP initialization, procurement call, and assessment were **not started** because the tester bearer failed validation.
-- The hidden local entry was compared in memory against the unchanged registry's tester-1 token hash. It did not match. No owner fallback, credential retry, registry edit, or authentication-policy change was attempted.
-- Execution stopped **before temporary-container creation and before public-routing changes**. No bearer was transmitted to the public endpoint or supplied to Claude. The session reference was cleared and the entry process exited. No credential value was printed, persisted, put in arguments, or published.
-- A neutral four-question tester prompt and a session-only one-call guard were prepared. The guard rejects changed arguments, extra identifiers, refresh flags, or duplicate calls; four offline mocked guard checks passed. No real call marker was created. These preparations are not tester feedback.
-
-## Cache result and actual feedback
-
-| Requested evidence | Outcome |
-| --- | --- |
-| Cache status (hit/stale/miss) | **Not measured**; no tool response exists. AQ-007's earlier hit is not relabeled as current. |
-| Returned lead count | **Not measured**, not zero leads. |
-| Useful next procurement step | **No tester feedback obtained.** |
-| Facts missing before purchase recommendation | **No tester feedback obtained.** |
-| Clarity of discovery, freshness and compatibility | **No tester feedback obtained.** |
-| Willingness to reuse and reasons | **No tester feedback obtained.** |
-
-No tester assessment, usefulness score, product fact, freshness assertion, compatibility judgment, or reuse intention is inferred. Installed/authenticated client status does not establish a completed client/model/MCP interaction. The approved outside-agent consumption question remains unanswered.
-
-## Exact activity and accounting
-
-- Public procurement-tool calls **0**; actual external discovery attempts **0**; SerpApi account requests **0**; destination fetches **0**; crawling **0**; verification **0**; other procurement-tool calls **0**.
-- No Claude inference request was made. Network activity was limited to authorized control-plane/documentation reads and unauthenticated health checks, plus read-only database accounting. No discovery-provider request occurred.
-- Provider allowance is **unknown/not queried** in AQ-008. This cycle spent no search attempts; previous provider readings are historical.
-
-| Identity | Consumed | Held | Discovery usage rows | Reservations | Settlements |
-| --- | --- | --- | --- | --- | --- |
-| owner, cap 10 | 3 → 3 | 0 → 0 | 15 → 15 | 6 → 6 | 6 → 6 |
-| tester-1, cap 5 | 0 → 0 | 1 → 1 | 24 → 24 | 9 → 9 | 9 → 9 |
-
-Both selected ledger digests and measured totals were unchanged. Read-only counts for all recorded procurement tools were also unchanged. The tester's historical hold remains intact. No ordinary zero-attempt usage row was expected or appended because the tester call never ran; such logging would be expected after an actual cache-only call. No quota reservation, settlement, history deletion, or reconciliation was performed.
-
-Credential-gated execution window: **2026-09-23T03:09:08.385273+00:00–2026-09-23T03:10:09.854436+00:00** (September 22 local time).
-
-## Runtime prerequisites and final state
-
-- Reviewed image digest is present and preserved: `sha256:3d42bc32ebba29acbef470a27e26cab91c7697b5f7b59ebb61ef9ed873358818`, tag `procurement-mcp:aq007-reviewed-20260922`. The pinned staging base layers and image configuration matched. No rebuild, retag, pull, or dependency installation occurred.
-- Existing staging hardening, browser-OFF environment, registry and database configuration passed read-only checks. No AQ-008 container exists. The planned container and its packaged runtime were therefore **not newly exercised**; AQ-007's earlier 37-file packaged validation remains historical evidence. Current 39-file workspace manifest and protected files remain unchanged.
-- Production at AQ-008 entry was container `b0fdbea96a1e`, image `sha256:cd138aca044cf7708efa687f413c1660c0c3d17ee134be2af6af0f0caf0be174`, started `2026-09-23T02:48:24.636309013Z`. This differs from AQ-007's earlier container ID and predates this task's execution. AQ-008 did not create, replace or restart it.
-- Original staging `f6c69a4c40e6`, image `sha256:e1df16073fa5e5f909770ef7042f1aa3a1ad06ed78f6a56a655830418e382a15`, remains healthy. Both containers retained their AQ-008 entry IDs, image IDs, start times and full configurations. Original image tags, AQ-007 image and registry are preserved; both original environments remain SerpApi-key absent and browser OFF.
-- Production remained on the single existing ngrok process **94808**, `https://unwieldy-subpar-pastel.ngrok-free.dev` → **http://localhost:3000**. Independent final checks confirmed one tunnel/process and local/public HTTP 200 with status ok. No swap occurred; no routing restoration or temporary-container removal was necessary. The named temporary container was independently confirmed absent.
-- Existing ngrok request inspection was **already enabled** at entry and remains so. No authenticated request was sent through it. The initial setup check unnecessarily required the existing production tunnel to have inspection disabled; that setup-only stop was corrected to permit the approved temporary swap to disable inspection before any authenticated traffic. The later, actual credential mismatch prevented that swap. No pooling or alternate route was introduced. This packet does not claim that existing production inspection was disabled.
-
-## Validation and exclusions
-
-Python preflight and final check each: **666 passed / 0 failed / 46 skipped**, 712 collected:
-```sh
-PYTHONDONTWRITEBYTECODE=1 venv/bin/python -m pytest procurement/tests -p no:cacheprovider
-```
-Both used the all-network-denied macOS sandbox; credential variables and PostgreSQL integration opt-ins were unset. Skips are opt-in PostgreSQL integration tests. Counts are separate runs, not additive.
-
-MCP/HTTP prerequisites: **57 passed / 0 failed / 0 skipped** across remote-test.js, policy-test.js, schema-test.js, discoveryBudget-test.js, clientRegistry-test.js, usageLogging-test.js and browseroff-test.js. Loopback was allowed, external outbound networking denied, and database/provider I/O used doubles. No unsafe smoke-test.js, placeholder npm test, live database integration test, or unqualified Node discovery ran. The temporary tester's one-call guard separately passed four offline mocked checks.
-
-No product-code, schema, dependency, auth/authz, source-policy, public-tool, production rollout, MCP Registry, cloud, billing or credential-rotation changes. Only scoped temporary test helpers and supervisor documentation were prepared. Governance and strategy are unchanged. No private logs, raw credentials, database connection strings, or raw provider payloads are published.
-
-Next prerequisite: a secure local entry matching the **existing tester-1 bearer**. Do not rotate credentials, use owner, refresh the cache, or substitute a Codex assessment. Resume only within the recorded one-call scope after that prerequisite is resolved.
-
-state: BLOCKED
-task: AQ-008
-next_action: Resolve the existing tester-1 hidden-entry mismatch; no further test activity in this cycle.
-
-
----
-
-# AQ-008 — Approved; outside-agent prerequisite check
-
-Jon explicitly approved AQ-008 in the active instruction beginning “Jon explicitly approved AQ-008: one outside-agent consumption test.” He directed AQ-007 to be recorded as supervisor-reviewed. Decision source is this active instruction; no durable session-message URL is available. AQ-007 is now SUPERVISOR-REVIEWED, without promoting its leads or establishing purchase suitability. AQ-008 is APPROVED, with execution conditional on a separate existing tester agent/client being available. Codex or a Codex subagent calling the tool does not qualify.
-
-Exact scope: reuse the verified AQ-007 image digest sha256:3d42bc32ebba29acbef470a27e26cab91c7697b5f7b59ebb61ef9ed873358818 in a temporary hardened AQ-008 container, unchanged registry/database/auth, browser OFF and SERPAPI_API_KEY absent. Existing tester-1 bearer through secure local entry only; no owner fallback. Confirm the separate tester before public routing changes. One tester search_procurement_intelligence call: query replacement charger, device MacBook Air, model A2681, model_identifier omitted, minimum_evidence discovered, both refresh flags false. Report stale honestly; stop on missing cache without refresh. No provider/account requests, destination fetch, crawling, verification or additional procurement-tool calls.
-
-Capture actual tester feedback on useful next steps, missing purchase facts, clarity of discovery/freshness/compatibility, and reuse intent. Feedback is not verified product evidence. Confirm zero attempts and unchanged consumed/held budgets; ordinary zero-attempt usage logging is expected. Clear bearer, remove only temporary AQ-008 container, restore production localhost:3000 and independently verify health even on failure. Preserve original containers/images. Publish one sanitized packet and reconcile controls; no code/schema/dependency/auth/policy/public-tool/production-rollout/Registry/cloud changes. End APPROVAL_REQUIRED or BLOCKED.
-
-state: CONTINUE
-task: AQ-008
-next_action: Confirm a separate tester agent/client is available before creating a public test route.
-
-All earlier status entries below are historical and superseded by this explicit approval/review record within its bounded scope.
-
----
-
-# AQ-007 — Completed; APPROVAL_REQUIRED
-
-Jon explicitly approved this one controlled relevance regression in the active 2026-09-22 instruction. The approval covered the existing AQ-006 patch including the anchored-prefix correction, a separately tagged hardened temporary runtime, hidden owner-first credential entry, one public request/at most one external search, temporary exclusive ngrok routing, cleanup, and this sanitized supervisor publication/reconciliation. This records Jon's explicit decision; no further work is approved.
-
-Request: replacement charger; device MacBook Air; model A2681; model_identifier omitted; minimum_evidence=discovered; both refresh flags true. Actual prioritized and persisted query: MacBook Air A2681 replacement charger. Result: one public call, one measured search attempt, miss → hit, success, five discovered/unverified leads, compatibility unknown. No retries, pagination, fallback, destination fetches, crawling, verification, or inferred product facts.
-
-Comparable URL evidence versus AQ-005: three apparently topical retail search/category leads, one topical information guide, one indeterminate opaque catalog lead, zero visibly off-topic leads; AQ-005 had two apparently off-topic leads and three indeterminate video URLs. Both returned five. This suggests a better visible topical mix, not proven procurement usefulness or compatibility; changed query/filtering, time and upstream ranking prevent causal attribution.
-
-Provider readings 242 → 241 are separate from one measured attempt; reserve 25 preserved. Owner consumed 2 → 3 of 10, held 0 → 0, exactly one reservation/settlement. Tester-1 consumed 0/held 1 and selected ledger digest unchanged. Credentials cleared, only temporary AQ-007 container removed, production routing restored to localhost:3000 and independently healthy. Both original containers/configurations/image tags and registry unchanged; browser OFF. Secret-free AQ-007 image retained: procurement-mcp:aq007-reviewed-20260922, sha256:3d42bc32ebba29acbef470a27e26cab91c7697b5f7b59ebb61ef9ed873358818.
-
-Prerequisites and final Python: 666 passed / 0 failed / 46 skipped each run; MCP/HTTP prerequisites including remote-test.js: 57 passed / 0 failed / 0 skipped with external outbound networking OS-blocked and I/O doubles. All 37 packaged runtime files match reviewed source; protected baseline files, inherited hardening and anchored correction preserved. No product code, dependency, schema, auth, source-policy, public-tool, production-container or registry publication changes.
-
-Sanitized packet: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5788153252
-
-state: APPROVAL_REQUIRED
-task: AQ-007
-next_action: Supervisor review only. No further search, deployment or roadmap step.
-
-All status text below is historical; earlier AQ-006 pending and AQ-007 blocked/in-progress statuses are superseded only by this completed bounded cycle. Truth rules and limitations remain in force.
-
----
-
-# AQ-007 — Controlled Live Relevance Regression
-
-**Outcome: APPROVAL_REQUIRED — one approved regression completed; stop for supervisor review.**
-
-Jon explicitly approved AQ-007 in the active Codex instruction on 2026-09-22, beginning “Jon explicitly approved AQ-007: one controlled live relevance regression.” The approval was recorded locally before preparation. Latest Supervisor Issue #1 and control files were read; the latest published result was AQ-005. The earlier local AQ-007 credential-prerequisite stop made no live attempt. This cycle uses the existing AQ-006 patch, including the anchored-prefix correction, without modifying product code or broadening implementation scope. Publication and control-file reconciliation are explicitly authorized by that instruction. No durable session-message URL is available; this quotation identifies the decision source.
-
-## Exact request and measured result
-
-- Query `replacement charger`; caller-supplied device `MacBook Air`, model `A2681`; model_identifier omitted, represented as null by planning. minimum_evidence=discovered; refresh_if_missing=true; refresh_if_stale=true.
-- Existing owner identity only; hidden bearer entry matched the unchanged registry before hidden SerpApi entry. Initialize and all four existing tool names succeeded.
-- **One public discovery call; one measured external search attempt.** Cache miss → hit; status refreshed; discovery success; error_code null; five returned leads. No forced cache miss, deletion, invalidation, or repeated discovery call.
-- Packaged planner preflight and actual response both prioritized **`MacBook Air A2681 replacement charger`**. Every returned record preserves that exact discovering query. AQ-005 instead recorded `"A2681" replacement charger`. Other planned variants were not searched.
-- Active max_queries=1, no_cache=false, no automatic retries, no redirects/pagination/fallback/refill. At most 20 organic rows inspected and five distinct exact URLs admitted by the reviewed patch. Raw rows/rejection counts were not collected; these are configured bounds, not measured rejection statistics.
-- All five records are discovered/unverified, compatibility unknown, no verified product observation, last_checked_at=null and last_verified_at=null. Unknown compatibility_required remains null. No snippet or lexical match became a product fact.
-- Retries 0; second searches 0; destination fetches 0; browser crawling 0; verification 0.
-
-Execution window: 2026-09-22T15:30:39.969745+00:00 through 2026-09-22T15:31:50.096557+00:00. Original discovery receipt timestamps span 2026-09-22T15:31:42.131484+00:00 through 2026-09-22T15:31:42.132639+00:00; these are not product-check timestamps.
-
-## Comparable URL-level assessment
-
-Only the exact returned URLs are assessed in both samples. No destination was opened and no title/snippet claims were used as verified evidence.
-
-| AQ-007 exact URL | URL-level assessment |
-| --- | --- |
-| https://www.amazon.com/clp/B0D5YH77VF | Apparent catalog path, opaque identifier: charger relevance indeterminate. No identity, product type, seller, or identifier meaning established. |
-| https://www.bestbuy.com/site/searchpage.jsp?id=pcat17071&st=macbook%20air%20charger | Apparent retail search page; visible search parameter is topical. Actual results and purchase options unknown. |
-| https://www.hoxtonmacs.co.uk/blogs/news/what-charger-do-i-need-for-my-macbook | Topical charger-information blog path; indirect informational lead, not demonstrated product/catalog procurement evidence. |
-| https://www.walmart.com/c/kp/macbook-air-charger | Apparent topical shopping/category path; listings and availability unknown. |
-| https://www.argos.co.uk/sd/macbook-air-charger/ | Apparent topical shopping/search/category path; listings and availability unknown. |
-
-[AQ-005 completed baseline](https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5753941066) returned these exact URLs:
-
-| AQ-005 exact URL | Comparable assessment |
-| --- | --- |
-| https://www.reddit.com/r/networking/comments/1r00423/looking_for_suggestions_for_solarwinds_replacement/ | Apparent off-topic noise: networking/SolarWinds replacement forum path. |
-| https://www.youtube.com/watch?v=VMORIHJ1jVo | Video link with opaque ID; relevance indeterminate. |
-| https://www.youtube.com/watch?v=gniCCSC5K74 | Video link with opaque ID; relevance indeterminate. |
-| https://www.prolianceorthopedicassociates.com/dr-barrett-blog/week-2-to-week-6-after-knee-replacement-part-4 | Apparent off-topic noise: knee-replacement blog path. |
-| https://www.youtube.com/watch?v=9LTj_ZAD0m8&vl=en | Video link with opaque ID; relevance indeterminate. |
-
-AQ-007: **3 apparently topical retail search/category leads, 1 topical informational lead, 1 indeterminate catalog lead, 0 visibly off-topic leads**. AQ-005: **0 demonstrated topical shopping/category leads, 2 apparently off-topic leads, 3 indeterminate video links**. Exact URL overlap: zero. Both returned five, so this assessment does not rely on a reduced lead count. No specific product lead is verified.
-
-This sample shows a better visible topical mix; it does **not** establish improved real procurement usefulness, compatibility, purchasing availability, or broad relevance performance. The query context and filtering changed together, the observations occurred at different times, and upstream ranking/caching can vary. This is not a controlled attribution of benefit to screening alone. Lexical filtering can still admit informational/opaque leads or reject useful results. Fewer or zero leads in another request would not establish improved usefulness.
-
-## Allowance readings and actual-attempt accounting
-
-- Measured external search attempts: **1**, independent of allowance readings.
-- Two explicit non-search Account API readings: **242 before, 241 after**, observed delta 1. The unchanged provider also executed its per-search account guard. No account payload, contact information, or authenticated URL is published.
-- Unknown/malformed/inactive/unsafe allowance fails closed; allowance must exceed 25 before search. Both measured readings exceed the **25-search reserve**. Provider cache use/billing is not determined by the observed delta.
-- Owner cap 10: consumed **2 → 3**, held **0 → 0**, remaining **7**; rows **13 → 15**, reservations **5 → 6**, settlements **5 → 6**, measured total **2 → 3**. One reservation and one settlement, exactly one charged attempt, no duplicate charge observed.
-- Tester-1 cap 5: consumed **0 → 0**, held **1 → 1**, rows **24 → 24**, reservations **9 → 9**, settlements **9 → 9**. Digest of the selected historical ledger rows is unchanged. Its historical hold is preserved; no tester request was made.
-- Account checks remain non-atomic against unrelated consumers, and reporting may lag. No account-wide concurrency guarantee or ledger-history cleanup is claimed.
-
-## Preparation and exact checks
-
-Python before and after preparation/execution: **666 passed / 0 failed / 46 skipped**, 712 collected each time. Command each time:
-```sh
-PYTHONDONTWRITEBYTECODE=1 venv/bin/python -m pytest procurement/tests -p no:cacheprovider
-```
-Both used `sandbox-exec -p '(version 1)(allow default)(deny network*)'`; live PostgreSQL opt-ins, SERPAPI_API_KEY, MCP_API_KEY, DATABASE_URL, PGPASSWORD and MCP_CLIENT_REGISTRY_FILE were unset. Skips are existing opt-in PostgreSQL integration tests. The current count includes the anchored-prefix correction cases; the older AQ-006 report's 657 pass count is historical, not this run.
-
-MCP/HTTP prerequisites: **57 passed / 0 failed / 0 skipped**:
-```sh
-node --test mcp-server/remote-test.js mcp-server/policy-test.js mcp-server/schema-test.js mcp-server/discoveryBudget-test.js mcp-server/clientRegistry-test.js mcp-server/usageLogging-test.js mcp-server/browseroff-test.js
-```
-These used database/provider doubles and the OS profile:
 ```text
-(version 1)(allow default)(deny network*)(allow network-inbound (local ip "localhost:*"))(allow network-outbound (remote ip "localhost:*"))(allow network-bind)
+state: APPROVAL_REQUIRED
+task: AQ-010
+next_action: Return to Slice 1B V2 design and supervisor review; record the design and exact preflight text as a private reviewed artifact with a public summary and hash.
 ```
-An independent socket probe confirmed external outbound attempts receive an OS permission denial. remote-test.js itself exercises HTTP health/auth/host/body/rate/tool-list behavior, with PostgreSQL query/connect doubles and no provider-capable procurement call. Provider behavior is covered by the fixture-based Python/handler suites. No smoke-test.js, placeholder npm test, unqualified Node discovery, or live database integration tests ran.
-
-- Seven protected AQ-006 baseline hashes matched: source setup, policy registry, core discovery, MCP handler, budget, client registry, Dockerfile.
-- A separate tag `procurement-mcp:aq007-reviewed-20260922` was built from the pinned staging base `sha256:e1df16073fa5e5f909770ef7042f1aa3a1ad06ed78f6a56a655830418e382a15`, copying only four reviewed Python runtime files at mode 0444. No dependencies installed and no existing image tag overwritten.
-- New image: `sha256:3d42bc32ebba29acbef470a27e26cab91c7697b5f7b59ebb61ef9ed873358818`. Base layers and image user/environment/entrypoint/command/healthcheck/workdir/ports were preserved. Secret-free context and image configuration verified.
-- Credential-free packaged validation used the temporary AQ-007 container name with all networking disabled and automatic removal. **All 37 packaged runtime files** matched the reviewed workspace manifest; runtime code is not writable. Planned query, omitted identifier, prefix behavior, max_queries=1, caching enabled and reserve=25 checks passed. The live container used that exact image; source hashes remained unchanged afterward.
-- Setup-only failures: the first localhost sandbox spelling was rejected before tests began; the supported spelling passed. The first build addressed a local image ID as a Dockerfile name, causing a failed registry metadata lookup; using the existing local tag resolved to the verified pinned digest and succeeded. No provider request, credential activation, dependency installation, or live container occurred during those setup failures. All final prerequisites passed before live activity.
-
-Reviewed patch-file SHA-256 values:
-
-- `procurement/core/planner.py`: `a0ccc89f4f254b8695345a957d20f27b2f55a98c39a3a06df8c9c7b33e8c2d14`
-- `procurement/core/discovery_request_cache.py`: `4fb625c5299ec7213891bde50194727067bd34f3ca92de461a2c1d053ddcc749`
-- `procurement/discovery/serpapi.py`: `2c70c0cecded379ad80ba3bdf1767d1ad5fb3b374ab5db3e153da03545d9cb8e`
-- `procurement/intelligence_cli.py`: `a9400f78344e7d88caeb58a0bf1597571527b426807b5518e99bf914949eb0df`
-
-## Runtime, cleanup and exclusions
-
-Temporary live container `procurement-mcp-aq007-once`, ID `ae5677ea8c1a`, used loopback `127.0.0.1:57369 → 3000/tcp`. Runtime checks preserved UID/GID 10001, read-only root, ALL capabilities dropped, no added capabilities, no-new-privileges, nonprivileged mode, init, bridge network, readonly registry mount, unchanged auth and Neon environment, and browser crawling OFF. Limits remained 2 GiB memory, 2 CPUs, 256 PIDs, 256 MiB shared memory; `/tmp` remained `rw,noexec,nosuid,nodev,size=512m,mode=1777`.
-
-Hidden entries remained process memory/runtime environment only; Docker arguments carried environment names, not values. No credential values were placed in files, images, logs, chat, reports, or arguments. Container logging was `none`; temporary and restored ngrok launches used `--inspect=false`, without pooling or Host override. Only the temporary container was routed publicly during discovery.
-
-Credentials were cleared and the entry process exited. Only the temporary AQ-007 container was stopped/removed; its absence was independently verified. The secret-free AQ-007 image tag remains for review. Production/original staging images and containers were preserved.
-
-ngrok was restored exclusively to **http://localhost:3000**, PID **89124**. Independent post-run checks confirmed one tunnel/process, disabled request inspection, no pooling/Host override, exact public URL, and local/public health HTTP 200 with status ok. Production `3699d8b5bd15` and original staging `f6c69a4c40e6` remained healthy with unchanged IDs, image IDs, start times, full configuration and original tags. Registry equality was verified; both original environments remain SerpApi-key absent and browser OFF. Health means process liveness, not general readiness of every database/source operation.
-
-No product implementation, source-policy, schema/migration, dependency, auth/authz, public-tool schema, credential rotation, cloud, DNS, billing, MCP Registry publication, destination verification, or legacy ingestion changes. Permitted cache persistence and owner usage reservation/settlement occurred through the existing path; earlier discovery history was not deleted or rewritten. The AQ-006 v2 cache identity was preserved, not introduced or changed in this cycle.
-
-Control files are reconciled to this outcome with prior history retained; governance and strategy are unchanged. No further discovery, production rollout, or next roadmap step is authorized by completion.
-
-state: APPROVAL_REQUIRED
-task: AQ-007
-next_action: Supervisor review of this one completed regression only.
-
-
----
-
-# AQ-007 — explicit approval recorded; prerequisites in progress
-
-Jon explicitly approved AQ-007 again in the active instruction on 2026-09-22: one controlled live relevance regression using the existing AQ-006 patch including the anchored-prefix correction. This records his decision, not an inferred approval. Latest Issue #1 and remote control files were read; their latest published result is completed AQ-005. The earlier local AQ-007 credential blocker made no live attempt and is superseded for preparation only.
-
-Exact request: query `replacement charger`; device `MacBook Air`; model `A2681`; model_identifier omitted; minimum_evidence `discovered`; refresh_if_missing=true; refresh_if_stale=true. Existing owner identity only, validated by hidden bearer entry before hidden SerpApi entry. One public call, at most one search, max_queries=1, cache-first, no retries/pagination/fallback/destination fetching/crawling/verification; 25-search reserve and fail-closed allowance checks preserved. A hit is zero attempts and is not repeated.
-
-Separately tagged temporary image/container only; preserve production/original staging, hardening, auth, registry and Neon configuration. Disable temporary logging and ngrok inspection; exclusive temporary routing with no pooling, then clear credentials, remove only AQ-007 container, restore localhost:3000 and verify health/routing even on failure. Publish one sanitized AQ-007 packet including blocked outcomes, reconcile control files, then stop APPROVAL_REQUIRED or BLOCKED. This explicit publication instruction supersedes the earlier local “only after successful completion” wording.
-
-state: IN_PROGRESS
-task: AQ-007
-next_action: Complete prerequisite tests, image equality and hardening checks before live execution.
-
----
-
-# AQ-007 — credential prerequisite BLOCKED
-
-Jon explicitly approved one controlled live AQ-006 relevance regression. The
-approval and bounded scope were recorded locally. Read-only Docker preflight found
-healthy unchanged production and original staging containers, with separate
-existing image tags and recorded hardening. The owner registry was present and
-unchanged.
-
-The required secure hidden SerpApi entry was unavailable: neither credential was
-inherited, the approved local env entries contained no SerpApi key, and no matching
-hidden Keychain entry was found. Work stopped before temporary image/container
-creation, ngrok routing, remote-test execution, provider/account activity, quota
-reservation, or publication. No credential values were printed or persisted.
-
-state: BLOCKED
-task: AQ-007
-
----
-
-# AQ-006 — Local implementation complete; live regression review pending
-
-Jon explicitly approved the deterministic relevance-screening patch in the active session. Full-context discovery priority, bounded 20-row/5-lead screening, one-query default, and request-cache version 2 are implemented locally with focused tests. Historical runs are preserved and no automatic refresh was introduced.
-
-Final network-blocked tests: focused Python 232 passed / 0 failed / 11 skipped; full Python 657 passed / 0 failed / 46 skipped; MCP regressions 54 passed / 0 failed / 0 skipped. The focused count is included in the full count. Node HTTP-listener tests were excluded to honor the networking ban.
-
-Implementation details and limitations: docs/aq006-relevance-screening.md. Lexical selection remains unverified evidence, with possible false positives/negatives; unknown compatibility is preserved. Public schemas, permissions, auth, dependencies, production and deployment state were not changed. No live requests or publication occurred.
-
-state: APPROVAL_REQUIRED
-task: AQ-006
-next_action: Review the local patch and authorize any bounded live regression separately.
-
----
-
-# AQ-005 current execution status — COMPLETED, AWAITING REVIEW
-
-Supersedes the earlier owner-credential BLOCKED status. Jon explicitly resumed the same single eligible query. Hidden owner entry matched the unchanged registry before temporary-runtime creation; no auth or registry changes occurred.
-
-Query: replacement charger; device MacBook Air; model A2681; model_identifier omitted. Exactly one public MCP discovery returned cache miss → hit, refreshed/success, one measured external attempt, and five discovered/unverified leads with compatibility unknown. Persisted discovering query was the quoted A2681 variant. No retry, second search, destination fetch, crawling, verification, or compatibility promotion occurred.
-
-URL-level sample: three video links of unknown relevance, one forum path about SolarWinds replacement, and one knee-replacement blog path. Two visible paths appear unrelated; no lead demonstrated charger-procurement relevance from the inspected evidence. No destination content or product facts were verified, and no additional demand was invented.
-
-Provider account readings were 243 before and 242 after, reported separately from one measured search attempt. The 25-search reserve was preserved. Owner consumed 1 → 2 of 10, held 0 → 0, with exactly one reservation/settlement and no double-counting observed. Tester-1 and its historical hold remained unchanged.
-
-Key cleared, temporary AQ-005 container removed, production ngrok restored to localhost:3000 (PID 85241), public health/upstream independently verified. Production and original staging IDs, images, and start times remain unchanged and healthy. No production/code/schema/dependency/auth/source-policy/public-tool/cloud changes occurred.
-
-Prior AQ-005 preparation tests: Python 596 passed / 0 failed / 46 skipped; Node 57 passed / 0 failed / 0 skipped. These counts were not rerun in this resume. Existing truth rules, source-policy/provenance boundaries, account concurrency/lag limitations, lifetime caps, and conservative holds remain.
-
-Sanitized completed packet: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5753941066
-
-state: APPROVAL_REQUIRED
-task: AQ-005
-next_action: Supervisor review only; no additional search or roadmap step authorized.
-
----
-
-# AQ-005 current execution status — BLOCKED
-
-The initial documentation sync completed and AQ-004 remains recorded as completed/reviewed. Jon's AQ-005 approval remains active within its exact bounds.
-
-One eligible recorded tester request was identified: replacement charger, caller-supplied context MacBook Air / A2681. Its read-only cache preflight was a miss. Validation probes and the excluded rear-wiper query were not selected; no additional demand was invented.
-
-The hidden owner bearer entry did not match the unchanged owner registry, so execution stopped before the SerpApi prompt, temporary-container creation, tunnel swap, or public MCP discovery. Public discovery calls, provider search attempts, account checks, retries, crawling, and verification were all zero. No lead count or source/relevance measurement exists. Provider allowance is unknown/not queried.
-
-Owner consumption remains 1/10 with zero holds; tester-1 remains consumed 0/held 1 and its ledger unchanged. Production/original staging IDs, images, and start times remained unchanged. Public ngrok still targets healthy production localhost:3000. No new credentials were activated or persisted, and no runtime/auth/schema/policy changes occurred.
-
-Safe tests: Python 596 passed / 0 failed / 46 skipped; Node 57 passed / 0 failed / 0 skipped. Scope remains limited to recorded demand; no compatibility/product facts are inferred.
-
-Sanitized packet: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5753875313
-
-Next prerequisite: hidden local entry matching the existing owner bearer. No credential rotation, auth change, tester fallback, repeated query, or expanded scope is authorized.
-
-state: BLOCKED
-task: AQ-005
-
----
-
-# Codex Report — AQ-005 documentation-only supervisor sync
-
-AQ-004 is COMPLETED AND REVIEWED, as explicitly directed by Jon on 2026-09-21 in the active Codex session. Its single public test recorded one external search attempt and five discovered/unverified leads, all compatibility unknown. Account readings were 244 before and after; observed delta zero is not a billing/cache determination. Owner durable usage became 1/10; tester history was unchanged. Credentials were cleared, the temporary container removed, and production tunnel/health restored without changing the production container/image. Result: https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5753722005 . This reviewed status does not establish candidate compatibility or broad procurement usefulness.
-
-AQ-005 is EXPLICITLY APPROVED BY JON ON 2026-09-21. Decision source: Jon's instruction beginning “AQ-005 is explicitly approved by Jon on 2026-09-21” in the active Codex session. This records Jon's decision, not an approval inferred by Codex. This documentation-only sync precedes AQ-005 execution.
-
-Synchronized the active task, approval record, current-status navigation, and reviewed AQ-004 outcome. Historical records and their limitations remain retained below or in the queue. No new product implementation, credentials, provider requests, destination fetches, runtime changes, or quota usage occurred during this sync. No new test results are claimed for documentation edits. Next: select only supported existing demand, then execute within the recorded AQ-005 bounds.
-
----
-
-## Historical AQ-003 report
-
-# Codex Report
-
-## Cycle
-
-AQ-003 — laptop deployment and durable per-client discovery validation.
-
-## Scope and changes
-
-The Jon-approved AQ-003 deployment was completed on the staging/validation runtime only. The AQ-002 quota implementation was packaged into the hardened image with its required runtime modules. The production container was not switched or restarted. No product source, schema, dependency, authentication, source policy, public tool schema, or browser-crawling policy was changed during validation.
-
-Configured lifetime pilot caps were owner=10 and tester-1=5. The existing Neon `procurement_usage_events` table was used with the application role's existing SELECT/INSERT permissions; no migration or destructive data operation occurred.
-
-## Validation results
-
-- Neon host and ledger permissions: passed; readable and appendable.
-- SerpApi credential present in runtime: false.
-- Container hardening: preserved (UID 10001, read-only filesystem, all capabilities dropped, no-new-privileges, resource limits, loopback-only binding, browser crawling OFF in production).
-- Cache/no-provider calls: passed for both identities; zero external search attempts.
-- Ordinary MCP tools: passed; all four tools were listed and inventory access succeeded.
-- Missing-credentials checks: six refresh attempts (four tester-1 and two owner) returned `missing_credentials`; actual SerpApi attempts remained 0.
-- Durable concurrent admission: four tester-1 reservations admitted, the fifth denied at the cap boundary; one owner reservation admitted independently.
-- Restart durability: staging restarted healthy; Neon reconstruction showed tester-1 held=5 (one historical hold plus four AQ-003 holds), owner held=1, tester exhausted, owner remaining=9, and 0 actual searches.
-- Recovery: exactly five tagged AQ-003 reservations were settled with measured attempts=0. The historical tester-1 hold was not touched. Final totals were owner consumed=0/held=0 and tester-1 consumed=0/held=1.
-- Owner-authenticated HTTP: initialize succeeded; the four frozen tools were returned; cache-only `search_procurement_intelligence` returned miss/not_invoked/0 attempts; `get_market_procurement_intelligence` returned success.
-
-## Deployment status
-
-Staging is healthy and validated. Production identity remained unchanged and was not switched. No public MCP/ngrok publication was performed. No SerpApi key was activated or persisted.
-
-## Accounting and safety
-
-Reservations and settlements remain distinct append-only ledger events. Zero-attempt provider-free outcomes did not consume quota, and no usage double-counting was observed. Unknown historical outcomes remain conservative holds. No deletes, updates, blanket cleanup, schema changes, or retries were used.
-
-## Limitations
-
-AQ-003 intentionally performed no new provider search, so it does not measure candidate quality. The controlled concurrency/isolation exercise used the real Neon ledger through the quota module; it was not a broad public-HTTP load test. Holds do not expire automatically. Caps are lifetime pilot caps, not periodic resets. Old workers or direct Python/stdio paths outside the remote HTTP boundary are not protected by this deployment.
-
-## Stop state
-
-AQ-003 is complete within the approved scope and awaits supervisor review. AQ-004 (runtime SerpApi activation and a new live discovery) is not approved.
-
-state: APPROVAL_REQUIRED
-task: AQ-003
-summary: Hardened staging deployment and provider-free Neon-backed quota validation passed; production unchanged.
-next_action: Supervisor review only.

@@ -1,76 +1,14 @@
-# Current cross-cutting requirements — 2026-10-03
-
-Jon approved the following directions for the control plane. They are required
-future gates, not authorization to implement them or to advance the active task.
-
-## Universal Agent Governance Harness
-
-Canonical project governance must be vendor-neutral. Project truth must be
-recoverable from plain, versioned repository files and recorded supervisor
-state, with no hidden model memory required. Any unknown or future agent must
-be able to begin from a universal `START_HERE.md`-style bootstrap. Vendor-specific
-files such as `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and Cursor rules are adapters
-only; they are not authoritative.
-
-Capability and authorization are separate checks. Missing, stale,
-inconsistent, or unverifiable authority fails closed. Deterministic preflight
-and guard scripts should supplement prose instructions. After every completed
-gate, reconcile the supervisor repository without rewriting history, then
-verify the remote commit SHA, exact changed files, and remote file contents
-before advancing.
-
-Installing this harness remains **APPROVAL_REQUIRED**. It requires its own
-reviewed merge/collision plan and explicit Jon approval. This direction does
-not authorize product-repository changes, skills or adapters, runtime code,
-authentication, credentials, dependencies, or deployment.
-
-## Secure Agent Handshake
-
-Secure Agent Handshake is a mandatory security gate before broad public agent
-access. Its future design must use TLS-protected transport; asymmetric proof
-of key possession or an equivalently strong standard proof-of-possession
-mechanism; a server-generated nonce/challenge with short expiration and
-single-use replay protection; protocol/security-version binding and downgrade
-resistance; short-lived sessions, sender-bound/proof-of-possession sessions
-where practical, revocation and key rotation; and safe handshake audit records.
-Authentication and authorization remain strictly separate:
-
-**AUTHENTICATED != AUTHORIZED**
-
-The external handshake must never expose or transmit long-lived private keys,
-master credentials, database credentials, provider/API credentials, internal
-refresh-fencing capabilities, or internal owner capability/token material.
-Different agent ecosystems may use different authentication adapters, but
-every successful method must resolve to the same internal Principal and
-authorization boundary. Static bearer authentication may remain a bounded
-pilot mechanism; it is not the intended long-term broad-public trust model.
-Handshake design and implementation, including auth, key, and deployment
-changes, remain separately **APPROVAL_REQUIRED**. No handshake code is
-authorized by this entry.
-
-## Active roadmap boundary
-
-AQ-010 remains the sole active Roadmap Stage 1 task. Slice 1A is COMPLETED /
-SUPERVISOR-REVIEWED. Corrected Python validation remains 682 passed / 0 failed /
-46 skipped; full safe Node validation remains 57 passed / 0 failed / 0 skipped.
-Real PostgreSQL integration/concurrency remains unvalidated. Slice 1B
-implementation and migration 006 creation/application remain NOT APPROVED;
-their existing design/review boundaries are unchanged.
-
----
-
-## Historical roadmap — preserved verbatim
-
 # Procurement Intelligence Roadmap
 
 ## Document status and authority
 
-AQ-009 establishes this authoritative long-term navigation map in the control
-plane. It is a target sequence, not a claim of implemented capabilities or an
-authorization to execute later stages. Jon remains the final YES / NO authority
-under [AI_SUPERVISOR.md](AI_SUPERVISOR.md); the single approved task and gates are
+This is the authoritative long-term navigation map for the project. It was
+established under AQ-009, whose Stage 0 foundation is accepted and closed. It is
+a target sequence, not a claim of implemented capabilities or an authorization
+to execute any stage. Jon remains the final YES / NO authority under
+[AI_SUPERVISOR.md](AI_SUPERVISOR.md); the single active task and its gates are
 recorded in [CURRENT_TASK.md](CURRENT_TASK.md) and
-[APPROVAL_QUEUE.md](APPROVAL_QUEUE.md). Foundation review is pending.
+[APPROVAL_QUEUE.md](APPROVAL_QUEUE.md).
 
 ## North Star
 
@@ -90,12 +28,38 @@ The product is not generic search. It is procurement infrastructure for agents.
 - MODEL MENTION != COMPATIBLE.
 - UNKNOWN != NO.
 - UNKNOWN != ZERO.
+- AUTHENTICATED != AUTHORIZED.
 - Finding an item never grants authority to buy it.
 - A cache read never silently authorizes external discovery.
 - External providers may supply data or transport requests, but they do not own procurement truth.
 - Historical evidence is preserved immutably when policy permits.
 - Every externally visible capability must degrade explicitly rather than fabricate a result.
 - Every task must identify which roadmap stage it advances.
+
+## Cross-Cutting Gates
+
+These apply across stages. Both are approved as permanent direction; neither is
+approved for installation or implementation. Full requirements are in
+[DECISIONS.md](DECISIONS.md).
+
+### Universal Agent Governance Harness
+
+- Governance is vendor-neutral; canonical truth lives in versioned files.
+- No hidden model memory is required.
+- Every agent bootstraps from [START_HERE.md](START_HERE.md).
+- Vendor-specific agent files are adapters, never authority.
+- Deterministic guard scripts supplement prose rules.
+- Installation (adapters, guard scripts, vendor files) is separately
+  approval-gated.
+
+### Secure Agent Handshake
+
+- Mandatory before broad public agent access, regardless of which stage is
+  current. Static bearer authentication remains a bounded pilot mechanism only.
+- The full identity and delegated-authority model belongs to Stage 8; the
+  minimum handshake gate does not wait for Stage 8.
+- AUTHENTICATED != AUTHORIZED.
+- Design and implementation are separately approval-gated.
 
 ## Roadmap Sequence
 
@@ -118,6 +82,9 @@ Deliverables:
 Exit condition: a written, reviewed foundation defines how the system behaves
 when each optional dependency disappears.
 
+Status: **ACCEPTED / CLOSED** (AQ-009). See
+[ARCHITECTURE_RESILIENCE.md](ARCHITECTURE_RESILIENCE.md).
+
 ### Stage 1 — Cache and Relevance Integrity
 
 Goal: cached data must never become authoritative merely because it is cached.
@@ -134,6 +101,33 @@ Target behavior:
 
 Exit condition: a bad discovery batch cannot replace a known-good active head,
 and stale/negative states are explicit.
+
+Status: **CURRENT** (AQ-010).
+
+- Slice 1A: COMPLETED / SUPERVISOR-REVIEWED.
+- Slice 1B: design and supervisor review only; implementation NOT APPROVED.
+- Migration 006: creation and application NOT APPROVED.
+
+Open risks:
+
+1. Real PostgreSQL integration and concurrency remain unvalidated.
+2. Repeated refresh after quarantine may spend quota until Slice 1B
+   coordination/backoff is implemented and validated.
+3. Broad relevance improvement is unproven; measured live evidence is very
+   narrow (one repeated query).
+
+Before Slice 1B can be ACCEPTED / CLOSED:
+
+- PostgreSQL integration and concurrency are exercised on an isolated,
+  throwaway database under separately approved scope;
+- quarantine and refresh backoff behavior is validated;
+- refresh coordination / fencing behavior is validated.
+
+Before Stage 1 can be declared COMPLETE:
+
+- a small, fixed, predeclared multi-query relevance regression set based on
+  real procurement demand is run under separately approved scope;
+- results are reported without claiming causation or quality beyond the sample.
 
 ### Stage 2 — Agent-Facing Procurement Contract
 
@@ -155,7 +149,7 @@ The agent should not need to understand internal pipeline tools. Responses shoul
 
 Exit condition: an independent agent can consume one stable procurement contract
 without orchestrating internal tools. This target does not rename or replace any
-existing MCP tool in AQ-009.
+existing MCP tool until a separately approved Stage 2 task does so.
 
 ### Stage 3 — Procurement Intelligence Quality
 
@@ -262,6 +256,10 @@ Long-term principal model:
 Authentication mechanisms such as static bearer, OAuth, JWT, or enterprise
 identity must resolve to the same internal Principal abstraction.
 
+The Secure Agent Handshake requirements in [DECISIONS.md](DECISIONS.md) are the
+minimum gate for broad public agent access and apply before this stage if broad
+access is requested earlier.
+
 Exit condition: authorization policy is independent of the external authentication mechanism.
 
 ### Stage 9 — Commercial Model
@@ -349,10 +347,12 @@ The dependency tiers and stricter measured-need rule are defined in
 
 ## Current Navigation
 
-**AQ-009 Architecture Resilience Baseline — Stage 0 is accepted and closed.**
-**AQ-010 Cache/Relevance Integrity — Stage 1 is current.** Jon approved only
-Slice 1A local implementation and tests under the bounds in CURRENT_TASK.md.
-Slice 1A is locally complete and awaits review; Slice 1B and migration 006
-remain separate gates. New dependencies, production
-deployment, authentication changes, provider activation, and transaction
-implementation are not authorized by this Stage 1A decision.
+- Stage 0 — Architecture Resilience Baseline: **accepted / closed** (AQ-009).
+- Stage 1 — Cache and Relevance Integrity: **current** (AQ-010).
+  - Slice 1A: completed / supervisor-reviewed.
+  - Slice 1B: design and review only; implementation not approved.
+  - Migration 006: not approved.
+- Stages 2–12: not started; no authorization exists for any of them.
+
+New dependencies, production deployment, authentication changes, provider
+activation, and transaction implementation each require their own approval.
