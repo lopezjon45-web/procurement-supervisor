@@ -104,7 +104,7 @@ implementation need separate approval.
 
 ## Provenance
 
-These decisions were recorded from Jon's instructions in agent sessions. Most
-have no direct durable Jon source; their provenance is "historical approval
-reported; direct durable source unavailable". A Jon ratification comment on
-Issue #1 is the proposed direct source.
+This decision set was approved directly by Jon as part of the control-plane
+repair ([Issue #1 decision](https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5974634751)).
+Some underlying historical actions still have incomplete provenance:
+"historical approval reported; direct durable source unavailable".

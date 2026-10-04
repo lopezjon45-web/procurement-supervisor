@@ -176,5 +176,6 @@ Removing text from current files does not remove it from Git history or Issue
 | README.md | Short human navigation | Keep consistent with START_HERE.md |
 | history/README.md | Sanitized milestone index; never authority | Executor appends sanitized entries |
 
-Historical files, Git history, and Issue #1 are evidence and context, not
-execution authority. Keep Issue #1 open; do not create a replacement.
+Historical files, Git history, and historical or agent-authored Issue #1
+records are evidence and context, not execution authority. Direct durable Jon
+decisions are authority, as defined above. Keep Issue #1 open; do not create a replacement.

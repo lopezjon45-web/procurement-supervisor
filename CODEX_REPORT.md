@@ -15,8 +15,11 @@ product workspace):
 - Request-cache identity is version 3. `content_state` is `miss`, `fresh`
   (24 h), `stale_servable` (at most 24 h more), `hard_stale`, or `quarantined`;
   stricter SourcePolicy limits win.
-- A failed, quarantined, or empty refresh never replaces an admitted head.
-  Last-known-good is served explicitly as stale with original timestamps.
+- A successful but empty or all-rejected first discovery does not create an
+  accepted head.
+- A failed or quarantined refresh cannot replace a same-version admitted head.
+  Only same-version, policy-permitted last-known-good is served, explicitly as
+  stale with original timestamps.
 - Tool names, public inputs, and bounds (one query, 20 rows, five leads, no
   automatic retry) are unchanged.
 

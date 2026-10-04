@@ -21,8 +21,13 @@ AQ-010 is the sole active task. Jon remains the final YES / NO authority.
 
 The Slice 1B V2 design packet and the read-only migration-history preflight
 exist as private artifacts. Review on 2026-10-04 found the preflight needs
-revision before it can be approved (explicit role checks, hard stop
-conditions, lock and idle timeouts, connection path). Revised artifacts, their
+revision before it can be approved. Required corrections include, but are not
+limited to: explicit target-role privilege checks; hard stops for database,
+read-only state, and unreadable ledgers, with absent and unreadable ledgers
+reported distinctly; statement, lock, and idle-in-transaction timeouts; a
+direct connection path; ownership-dependency filters; broader migration-ledger
+detection; and exact occupancy checks for the proposed 006 objects. The full
+correction set is in the private review record. Revised artifacts, their
 SHA-256 hashes, and a sanitized summary will be recorded here.
 
 ## Open risks
