@@ -38,28 +38,13 @@ The product is not generic search. It is procurement infrastructure for agents.
 
 ## Cross-Cutting Gates
 
-These apply across stages. Both are approved as permanent direction; neither is
-approved for installation or implementation. Full requirements are in
-[DECISIONS.md](DECISIONS.md).
+Two approved directions apply across all stages; full requirements are in
+[DECISIONS.md](DECISIONS.md):
 
-### Universal Agent Governance Harness
-
-- Governance is vendor-neutral; canonical truth lives in versioned files.
-- No hidden model memory is required.
-- Every agent bootstraps from [START_HERE.md](START_HERE.md).
-- Vendor-specific agent files are adapters, never authority.
-- Deterministic guard scripts supplement prose rules.
-- Installation (adapters, guard scripts, vendor files) is separately
-  approval-gated.
-
-### Secure Agent Handshake
-
-- Mandatory before broad public agent access, regardless of which stage is
-  current. Static bearer authentication remains a bounded pilot mechanism only.
-- The full identity and delegated-authority model belongs to Stage 8; the
-  minimum handshake gate does not wait for Stage 8.
-- AUTHENTICATED != AUTHORIZED.
-- Design and implementation are separately approval-gated.
+- **Universal Agent Governance Harness:** vendor-neutral governance bootstrapped
+  from [START_HERE.md](START_HERE.md); installation is separately gated.
+- **Secure Agent Handshake:** mandatory before broad public agent access,
+  regardless of stage; design and implementation are separately gated.
 
 ## Roadmap Sequence
 
@@ -102,19 +87,7 @@ Target behavior:
 Exit condition: a bad discovery batch cannot replace a known-good active head,
 and stale/negative states are explicit.
 
-Status: **CURRENT** (AQ-010).
-
-- Slice 1A: COMPLETED / SUPERVISOR-REVIEWED.
-- Slice 1B: design and supervisor review only; implementation NOT APPROVED.
-- Migration 006: creation and application NOT APPROVED.
-
-Open risks:
-
-1. Real PostgreSQL integration and concurrency remain unvalidated.
-2. Repeated refresh after quarantine may spend quota until Slice 1B
-   coordination/backoff is implemented and validated.
-3. Broad relevance improvement is unproven; measured live evidence is very
-   narrow (one repeated query).
+Status: **CURRENT** (AQ-010). Current status and open risks are in [CURRENT_TASK.md](CURRENT_TASK.md).
 
 Before Slice 1B can be ACCEPTED / CLOSED:
 
@@ -326,33 +299,12 @@ while preserving evidence and uncertainty.
 
 ## Dependency Policy
 
-New external runtime services are not roadmap progress by themselves.
-
-Before adding one, document:
-
-- purpose;
-- why the current application/Postgres architecture cannot reasonably provide the capability;
-- authoritative state, if any;
-- failure behavior;
-- replacement path;
-- cost;
-- security impact;
-- operational burden;
-- rollback plan.
-
-If the proposed service would own procurement truth or make optional-service loss
-corrupt authoritative state, do not add it without an explicit architecture decision.
-The dependency tiers and stricter measured-need rule are defined in
-[ARCHITECTURE_RESILIENCE.md](ARCHITECTURE_RESILIENCE.md).
+New external runtime services are not roadmap progress by themselves. The
+dependency tiers and the measured-need rule in
+[ARCHITECTURE_RESILIENCE.md](ARCHITECTURE_RESILIENCE.md) apply to every proposal.
 
 ## Current Navigation
 
-- Stage 0 — Architecture Resilience Baseline: **accepted / closed** (AQ-009).
-- Stage 1 — Cache and Relevance Integrity: **current** (AQ-010).
-  - Slice 1A: completed / supervisor-reviewed.
-  - Slice 1B: design and review only; implementation not approved.
-  - Migration 006: not approved.
-- Stages 2–12: not started; no authorization exists for any of them.
-
-New dependencies, production deployment, authentication changes, provider
-activation, and transaction implementation each require their own approval.
+Stage 0 is accepted and closed (AQ-009). Stage 1 is current (AQ-010); see
+[CURRENT_TASK.md](CURRENT_TASK.md). Stages 2–12 have not started, and nothing
+authorizes them.

@@ -42,27 +42,6 @@ durable_decision_source:
 
 ## AQ-010 requests
 
-### AQ010-CONTROL-INTEGRITY
-
-- **task:** AQ-010 (control plane; not a new task)
-- **action:** Documentation-only repair of this repository: current files hold
-  current truth only; ROADMAP.md restored as authority; operational details
-  removed from current files; START_HERE.md and history/README.md added.
-- **status:** CONSUMED
-- **exact_scope:** The reviewed diff for README.md, START_HERE.md,
-  AI_SUPERVISOR.md, DECISIONS.md, CURRENT_TASK.md, APPROVAL_QUEUE.md,
-  CODEX_REPORT.md, ROADMAP.md, AQ-009_CONTROL_SYNC.md, and history/README.md.
-- **why_needed:** Current files contradicted each other, the roadmap was
-  labelled historical, and operational details were published.
-- **risk_cost:** Public documentation only. No runtime, data, or quota effect.
-- **evidence_prerequisites:** Remote `main` still at the reviewed baseline.
-- **reconciliation:** Jon's direct durable decision approved the reviewed
-  scope and status-only reconciliation; both are published as one clean main
-  commit with a sanitized message.
-- **rollback:** A follow-up commit restoring prior text. No history rewrite.
-- **decision:** YES / APPROVED AND CONSUMED
-- **durable_decision_source:** https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5974634751
-
 ### AQ010-LIVE-MIGRATION-PREFLIGHT
 
 - **action:** Execute the exact read-only migration-history preflight against
@@ -73,34 +52,20 @@ durable_decision_source:
 - **why_needed:** Establish the actual migration state before migration 006 is
   designed against it.
 - **risk_cost:** Live database access; read-only.
-- **evidence_prerequisites:** AQ010-CONTROL-INTEGRITY published and verified;
-  the exact query text held in a private reviewed artifact, with a sanitized
-  summary and its SHA-256 hash recorded here. The artifact, summary, and hash
-  are not yet recorded.
+- **evidence_prerequisites:** The revised query text in a private reviewed
+  artifact, with a sanitized summary and its SHA-256 hash recorded here. Not
+  yet recorded; the first version was found to need revision.
 - **rollback:** Not applicable to read-only queries.
 - **decision:** PENDING
 - **durable_decision_source:** none yet
 
-### AQ010-MIGRATION006-CREATE
+### Future AQ-010 gates (NOT REQUESTED)
 
-- **action:** Create the migration 006 source file.
-- **status:** NOT REQUESTED
-
-### AQ010-SLICE1B-ISOLATED-PG-TEST
-
-- **action:** Integration and concurrency validation against an isolated,
-  throwaway PostgreSQL database.
-- **status:** NOT REQUESTED
-
-### AQ010-SLICE1B-IMPLEMENT
-
-- **action:** Slice 1B product implementation.
-- **status:** NOT REQUESTED
-
-### AQ010-PRODUCTION-APPLY
-
-- **action:** Production migration or deployment.
-- **status:** NOT REQUESTED
+- **AQ010-MIGRATION006-CREATE:** create the migration 006 source file.
+- **AQ010-SLICE1B-ISOLATED-PG-TEST:** integration and concurrency validation
+  against an isolated, throwaway PostgreSQL database.
+- **AQ010-SLICE1B-IMPLEMENT:** Slice 1B product implementation.
+- **AQ010-PRODUCTION-APPLY:** production migration or deployment.
 
 ## Housekeeping requests (not tasks)
 
@@ -135,5 +100,6 @@ durable_decision_source:
 
 ## Closed requests
 
-AQ-001 through AQ-009 and Slice 1A are CONSUMED or SUPERSEDED. See
-[history/README.md](history/README.md).
+AQ-001 through AQ-009, Slice 1A, and AQ010-CONTROL-INTEGRITY
+([decision](https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5974634751))
+are CONSUMED or SUPERSEDED. See [history/README.md](history/README.md).

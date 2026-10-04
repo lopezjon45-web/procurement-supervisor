@@ -15,22 +15,15 @@ AQ-010 is the sole active task. Jon remains the final YES / NO authority.
 | Slice 1B implementation | NOT APPROVED |
 | Migration 006 creation | NOT APPROVED |
 | Migration 006 application | NOT APPROVED |
-| Live read-only migration-history preflight | PREPARED (reported) / NOT EXECUTED / APPROVAL REQUIRED |
-| Control-plane integrity repair | COMPLETED / APPROVED / PUBLISHED (AQ010-CONTROL-INTEGRITY) |
+| Live read-only migration-history preflight | REVISION REQUIRED / NOT EXECUTED / NOT APPROVED |
 
-## Evidence gap
+## Review artifacts
 
-A corrected Slice 1B "V2" design and a read-only migration-history preflight
-were reported as prepared in the supervisor workstream. On 2026-10-03, neither
-had a durable record in this repository, in Supervisor Issue #1, or in the
-local product workspace. Until they are published for review, they are
-reported work, not current evidence, and no decision can rest on them.
-
-## Current prerequisite
-
-Record the corrected Slice 1B V2 design and exact preflight query text in a
-private reviewed artifact, with a public sanitized summary and SHA-256 hash,
-before the live read-only database preflight is considered for approval.
+The Slice 1B V2 design packet and the read-only migration-history preflight
+exist as private artifacts. Review on 2026-10-04 found the preflight needs
+revision before it can be approved (explicit role checks, hard stop
+conditions, lock and idle timeouts, connection path). Revised artifacts, their
+SHA-256 hashes, and a sanitized summary will be recorded here.
 
 ## Open risks
 
@@ -48,7 +41,6 @@ SourcePolicy change, harness installation, or handshake implementation.
 
 ## Next action
 
-1. Put the corrected Slice 1B V2 design and the exact preflight query text in
-   a private reviewed artifact; record a sanitized summary and SHA-256 hash
-   here for supervisor review.
-2. Jon decides YES / NO on AQ010-LIVE-MIGRATION-PREFLIGHT for that hash.
+1. Record the revised design and preflight hashes and a sanitized summary here
+   for supervisor review.
+2. Jon decides YES / NO on AQ010-LIVE-MIGRATION-PREFLIGHT for that exact hash.

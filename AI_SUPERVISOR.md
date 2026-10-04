@@ -175,7 +175,6 @@ Removing text from current files does not remove it from Git history or Issue
 | CODEX_REPORT.md | Current execution evidence (legacy filename) | Any authorized executor, truthfully |
 | README.md | Short human navigation | Keep consistent with START_HERE.md |
 | history/README.md | Sanitized milestone index; never authority | Executor appends sanitized entries |
-| AQ-009_CONTROL_SYNC.md | Historical reference; never authority | Corrections only, with Jon approval |
 
 Historical files, Git history, and Issue #1 are evidence and context, not
 execution authority. Keep Issue #1 open; do not create a replacement.
