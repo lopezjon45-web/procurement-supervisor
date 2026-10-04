@@ -13,21 +13,13 @@ history. Governance and roles are in [AI_SUPERVISOR.md](AI_SUPERVISOR.md).
   Every task names the roadmap stage it advances.
 - [ARCHITECTURE_RESILIENCE.md](ARCHITECTURE_RESILIENCE.md) is the accepted
   Stage 0 foundation. AQ-009 Stage 0 is accepted and closed.
-- AQ-010 (Stage 1, Cache/Relevance Integrity) is the sole active task.
 - The laptop-hosted pilot remains the operating direction. Cloud migration and
   broad publication require explicit approval and demonstrated value.
 
 ## Evidence invariants
 
-- DISCOVERED != VERIFIED.
-- SEARCH SNIPPET != PRODUCT FACT.
-- STALE != CURRENT.
-- MODEL MENTION != COMPATIBLE.
-- UNKNOWN != NO.
-- UNKNOWN != ZERO.
-- AUTHENTICATED != AUTHORIZED.
-- External providers supply input or transport; they never own procurement
-  truth.
+The evidence invariants in [AI_SUPERVISOR.md](AI_SUPERVISOR.md) are binding.
+External providers supply input or transport; they never own procurement truth.
 
 ## Standing constraints
 
@@ -112,7 +104,7 @@ implementation need separate approval.
 
 ## Provenance
 
-These decisions were recorded from Jon's instructions in agent sessions. Most
-have no direct durable Jon source; their provenance is "historical approval
-reported; direct durable source unavailable". A Jon ratification comment on
-Issue #1 is the proposed direct source.
+This decision set was approved directly by Jon as part of the control-plane
+repair ([Issue #1 decision](https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5974634751)).
+Some underlying historical actions still have incomplete provenance:
+"historical approval reported; direct durable source unavailable".

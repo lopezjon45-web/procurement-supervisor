@@ -2,8 +2,8 @@
 
 ## Document status
 
-AQ-009 / [ROADMAP.md](ROADMAP.md) Stage 0. This document defines the target
-foundation for supervisor review. It does not certify that the current runtime
+Accepted Stage 0 foundation (AQ-009, closed); see [ROADMAP.md](ROADMAP.md).
+It defines target behavior. It does not certify that the current runtime
 implements these interfaces, endpoints, failure modes, or transaction mechanisms.
 Approval boundaries remain governed by [AI_SUPERVISOR.md](AI_SUPERVISOR.md) and
 [APPROVAL_QUEUE.md](APPROVAL_QUEUE.md).
@@ -312,21 +312,3 @@ Do not:
 - allow transaction execution before durable intent/idempotency;
 - add a second source of truth as an outage workaround;
 - add infrastructure because it is fashionable rather than measured.
-
-## Current Implementation Direction
-
-AQ-009 establishes this foundation in the control plane only.
-
-The first product implementation after review should apply these rules to
-cache/relevance hardening:
-
-- semantic cache states;
-- relevance admission and quarantine;
-- versioned cache identity;
-- safe stale behavior;
-- negative/backoff states;
-- refresh single-flight before provider quota is spent.
-
-No schema migration, dependency addition, production deployment, authentication
-change, provider activation, or transaction implementation is authorized by this
-document alone.
