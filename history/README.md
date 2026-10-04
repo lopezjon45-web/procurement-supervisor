@@ -26,4 +26,5 @@ sessions; most have no direct durable Jon source.
 | AQ-010 Slice 1A | Stage 1 cache/relevance integrity; completed and supervisor-reviewed. | `7d31589`, `4d6104a`, `9127235`, `0591180` |
 | Cross-cutting gates | Universal Agent Governance Harness and Secure Agent Handshake recorded as approved direction. | `34130a5` |
 | Control-plane repair | AQ010-CONTROL-INTEGRITY approved and published; history removed from current files and indexed here. | `228daac` |
-| Repository cleanup | Duplicate and stale text removed; AQ-009_CONTROL_SYNC.md retired (in Git history at `228daac`). Approved in [Issue #1](https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5983779053). | this commit |
+| Repository cleanup | Duplicate and stale text removed; AQ-009_CONTROL_SYNC.md retired (in Git history at `228daac`). Approved in [Issue #1](https://github.com/lopezjon45-web/procurement-supervisor/issues/1#issuecomment-5983779053). | `b064122` |
+| AQ-010 Slice 1B and Stage 1 completion | Refresh coordination, single database setting, readiness reporting, failure-mode tests, and relevance screening version 4 implemented and accepted locally; ten-query relevance set run twice against the real provider. Not deployed. Stage 2 started. | this commit |

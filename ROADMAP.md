@@ -87,7 +87,8 @@ Target behavior:
 Exit condition: a bad discovery batch cannot replace a known-good active head,
 and stale/negative states are explicit.
 
-Status: **CURRENT** (AQ-010). Current status and open risks are in [CURRENT_TASK.md](CURRENT_TASK.md).
+Status: **CONDITIONS MET LOCALLY / NOT DEPLOYED** (AQ-010). Status, evidence, and open risks are in
+[CURRENT_TASK.md](CURRENT_TASK.md) and [CODEX_REPORT.md](CODEX_REPORT.md).
 
 Before Slice 1B can be ACCEPTED / CLOSED:
 
@@ -305,6 +306,7 @@ dependency tiers and the measured-need rule in
 
 ## Current Navigation
 
-Stage 0 is accepted and closed (AQ-009). Stage 1 is current (AQ-010); see
-[CURRENT_TASK.md](CURRENT_TASK.md). Stages 2–12 have not started, and nothing
-authorizes them.
+Stage 0 is accepted and closed (AQ-009). Stage 1's conditions are met on local
+evidence and it is not deployed (AQ-010). Stage 2 is current, started on Jon's
+instruction of 2026-10-04; see [CURRENT_TASK.md](CURRENT_TASK.md). Stages 3–12
+have not started, and nothing authorizes them.
